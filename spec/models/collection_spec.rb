@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'collection'
 
 describe Collection, type: :model do
   context "associations" do

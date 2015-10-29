@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'curator'
 
 describe Curator, type: :model do
   context "associations" do

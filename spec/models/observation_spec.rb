@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'observation'
 
 describe Observation, type: :model do
   context "associations" do
