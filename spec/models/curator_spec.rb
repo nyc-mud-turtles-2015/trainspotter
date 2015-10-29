@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Curator, type: :model do
+describe Curator, type: :model do
   context "associations" do
     it "should have_many collections" do
       curator = Curator.reflect_on_association(:collections)

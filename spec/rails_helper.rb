@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'database_cleaner'
+require 'shoulda/matchers'
 
 require 'simplecov'
 # save to CircleCI's artifacts directory if we're on CircleCI
