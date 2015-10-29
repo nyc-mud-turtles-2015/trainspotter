@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Observation, type: :model do
+Rspec.describe Observation, type: :model do
   context "associations" do
     it "should belongs_to curator" do
       observation = Observation.reflect_on_association(:curator)
