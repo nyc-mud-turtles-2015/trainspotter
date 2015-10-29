@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
+require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
 
