@@ -1,3 +1,18 @@
 require 'rails_helper'
 
-# see curator_spec.rb for example code
+describe Collection, type: :model do
+  context "associations" do
+    it "should belongs_to curator" do
+      collection = Collection.reflect_on_association(:curator)
+      collection.macro.should == :belongs_to
+    end
+    it "should have_many observations" do
+      collection = Collection.reflect_on_association(:observations)
+      collection.macro.should == :has_many
+    end
+  end
+
+  it "should require a title" do
+      expect(FactoryGirl.build(:collection, :title => "")).to be_invalid
+  end
+end
