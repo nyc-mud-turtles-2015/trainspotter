@@ -28,9 +28,8 @@ ActiveRecord::Schema.define(version: 20151029204302) do
 
   create_table "curators", force: :cascade do |t|
     t.string   "uid"
-    t.string   "username",                                                                         null: false
     t.string   "name"
-    t.string   "photo",               default: "http://www.gravatar.com/avatar/?s=60&d=identicon"
+    t.string   "avatar",              default: "http://www.gravatar.com/avatar/?s=60&d=identicon"
     t.datetime "created_at",                                                                       null: false
     t.datetime "updated_at",                                                                       null: false
     t.string   "avatar_file_name"

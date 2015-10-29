@@ -1,4 +1,4 @@
-jason = Curator.create(username: "Jason")
+jason = Curator.create(name: "Jason")
 
 
 jason.collections.create(title: "Caffeine Trips", description: "My descent into caffeine overload", curator_id: 1)
