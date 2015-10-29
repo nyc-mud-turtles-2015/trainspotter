@@ -15,4 +15,8 @@ describe Collection, type: :model do
   it "should require a title" do
       expect(FactoryGirl.build(:collection, :title => "")).to be_invalid
   end
+
+  it "should require a title" do
+      expect(FactoryGirl.create(:collection)).to be_valid
+  end
 end
