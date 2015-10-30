@@ -1,4 +1,5 @@
 class Curator < ActiveRecord::Base
+
   has_attached_file :avatar,
     styles: {
       :thumb => "100x100#",
@@ -11,7 +12,6 @@ class Curator < ActiveRecord::Base
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
   has_many :collections
   has_many :observations
-  validates :username, presence: true
-
+  validates :name, presence: true
 
 end

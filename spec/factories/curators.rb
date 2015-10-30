@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :curator do
-    username Faker::Internet.user_name
     name Faker::Name.name
+    avatar Faker::Avatar.image(Faker::Number.number(10))
   end
 end

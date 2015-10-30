@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'omniauth', '~> 1.2'
+gem 'omniauth-auth0', '~> 1.1'
 
  gem "paperclip", "~> 4.3"
  gem 'aws-sdk-v1'
