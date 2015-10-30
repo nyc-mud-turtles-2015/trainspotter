@@ -38,6 +38,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :development do
