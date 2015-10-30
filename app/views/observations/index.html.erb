@@ -3,7 +3,7 @@
 <% @observations.each do |o| %>
   <li><%= o.description %> </li>
   <ul>
-    <%= image_tag o.image.url %>
+    <%= link_to (image_tag o.image.url), observation_path(o) %>
   </ul>
 <% end %>
 
