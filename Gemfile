@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
  gem "paperclip", "~> 4.3"
  gem 'aws-sdk-v1'
+ gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'simplecov', :require => false
   gem 'rspec_junit_formatter', '0.2.2'
+  gem 'rails_12factor'
 end
 
 group :development do
