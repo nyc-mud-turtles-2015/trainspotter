@@ -1,6 +1,5 @@
 jason = Curator.create(name: "Jason")
 
+jason.collections.create(title: "Marty and Doc", description: "Great Scott!", curator_id: 1)
 
-jason.collections.create(title: "Caffeine Trips", description: "My descent into caffeine overload", curator_id: 1)
-
-# jason.observations.create(description: "I love this", curator_id:1, collection_id: 1, image: File.open(File.expand_path("../fixtures/photos/map.jpg", __FILE__)) )
+jason.observations.create(description: "Back to the Future!", curator_id:1, collection_id: 1, image: open("http://vignette2.wikia.nocookie.net/bttf/images/d/d2/Back_to_the_Future.jpg/revision/latest?cb=20070218045421"))
