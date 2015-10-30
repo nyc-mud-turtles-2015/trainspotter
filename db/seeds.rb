@@ -1,6 +1,5 @@
 jason = Curator.create(name: "Jason")
 
+nando = Collection.create(title: "Marty and Doc", description: "Great Scott!", curator_id: jason.id)
 
-jason.collections.create(title: "Caffeine Trips", description: "My descent into caffeine overload", curator_id: 1)
-
-jason.observations.create(description: "I love this", curator_id:1, collection_id: 1, image: File.open(File.expand_path("../fixtures/photos/map.jpg", __FILE__)) )
+Observation.create(description: "Back to the Future!", curator_id: jason.id, collection_id: nando.id)

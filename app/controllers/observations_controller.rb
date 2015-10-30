@@ -13,7 +13,6 @@
     if @observation.save
     else
       flash[:errors] = "Error"
-      redirect_to new_observation_path
     end
     redirect_to observations_path
   end
