@@ -9,13 +9,4 @@ class Observation < ActiveRecord::Base
 
   validates :curator, :collection, presence: true
 
-  # def s3_credentials
-  #   {
-  #    bucket: Rails.application.secrets.s3_bucket,
-  #    access_key_id: Rails.application.secrets.s3_key_id,
-  #    secret_access_key: Rails.application.secrets.s3_secret_key
-  #   }
-  # end
-  # , :storage => :s3, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
-
 end
