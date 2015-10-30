@@ -28,9 +28,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
 
- gem "paperclip", "~> 4.3"
- gem 'aws-sdk-v1'
- gem 'rails_12factor'
+gem "paperclip", "~> 4.3"
+gem 'aws-sdk-v1'
+gem 'rails_12factor'
+gem 'pg_search'
  # gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
