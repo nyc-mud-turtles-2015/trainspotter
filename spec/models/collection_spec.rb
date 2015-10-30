@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'collection'
+require_relative "../../app/models/collection.rb"
 
 describe Collection, type: :model do
   context "associations" do

@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'curator'
+require_relative "../../app/models/curator.rb"
 
 describe Curator, type: :model do
   context "associations" do

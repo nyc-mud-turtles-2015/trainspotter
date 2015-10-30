@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'observation'
+require_relative "../../app/models/observation.rb"
 
 describe Observation, type: :model do
   context "associations" do
