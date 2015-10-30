@@ -7,7 +7,7 @@
 
   function signin() {
     lock.show({
-        callbackURL: ENV['AUTH0_CALLBACK_URL']
+        callbackURL: 'https://trainspotterapp.herokuapp.com/auth/auth0/callback'
       , responseType: 'code'
       , authParams: {
         scope: 'openid profile'
