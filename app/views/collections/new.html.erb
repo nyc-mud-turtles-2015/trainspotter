@@ -1,0 +1,11 @@
+<%= flash[:errors] %>
+
+<div class="form">
+<h2>New Collection</h2>
+<%= form_for @collection do |f|%>
+  <p><%= f.text_field :title, placeholder: 'title' %></p>
+  <%= f.hidden_field :curator_id, value: 1 %>
+  <p><%= f.submit "Add" %></p>
+<% end %>
+</div>
+

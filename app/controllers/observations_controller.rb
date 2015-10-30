@@ -5,16 +5,18 @@
   end
 
   def new
+    @collection = Collection.find(params[:collection_id])
     @observation = Observation.new
   end
 
   def create
+    collection = Collection.find(params[:collection_id])
     @observation = Observation.new(valid_params)
     if @observation.save
     else
       flash[:errors] = "Error"
     end
-    redirect_to observations_path
+    redirect_to collection
   end
 
   def show

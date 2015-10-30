@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :observations, except: [:destroy]
-  root 'observations#index'
+  resources :collections, except: [:destroy] do
+    resources :observations, except: [:destroy]
+  end
+
+  root 'collections#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
