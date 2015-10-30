@@ -1,0 +1,10 @@
+<ul class = "content" >
+
+<% @collections.each do |c| %>
+  <li><%= c.title %> </li>
+  <ul>
+    <%= link_to (image_tag o.image.url(:thumb)), observation_path(o) %>
+  </ul>
+<% end %>
+
+</ul>
