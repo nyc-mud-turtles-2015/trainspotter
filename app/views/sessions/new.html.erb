@@ -2,10 +2,11 @@
 <script type="text/javascript">
 
   var lock = new Auth0Lock('6xdGITSV8AesO2w78fLOWkXDAD0h5rRJ', 'trainspotter.auth0.com');
+  var url = (document.location.origin + "/auth/auth0/callback")
 
   function signin() {
     lock.show({
-        callbackURL: 'http://localhost:3000/auth/auth0/callback'
+        callbackURL: url
       , responseType: 'code'
       , authParams: {
         scope: 'openid profile'
