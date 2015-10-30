@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029183628) do
+ActiveRecord::Schema.define(version: 20151029204302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,20 +28,27 @@ ActiveRecord::Schema.define(version: 20151029183628) do
 
   create_table "curators", force: :cascade do |t|
     t.string   "uid"
-    t.string   "username",                                                                null: false
+    t.string   "username",                                                                         null: false
     t.string   "name"
-    t.string   "avatar",     default: "http://www.gravatar.com/avatar/?s=60&d=identicon"
-    t.datetime "created_at",                                                              null: false
-    t.datetime "updated_at",                                                              null: false
+    t.string   "photo",               default: "http://www.gravatar.com/avatar/?s=60&d=identicon"
+    t.datetime "created_at",                                                                       null: false
+    t.datetime "updated_at",                                                                       null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "observations", force: :cascade do |t|
     t.integer  "curator_id"
     t.integer  "collection_id"
-    t.string   "image"
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "observations", ["collection_id"], name: "index_observations_on_collection_id", using: :btree

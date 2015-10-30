@@ -14,3 +14,7 @@
 
 * Ignore simplecov coverage file
 /coverage
+=======
+# Ignore Environment Configuration Files
+config/database.yml
+.env
