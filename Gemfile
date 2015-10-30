@@ -45,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'simplecov', :require => false
   gem 'rspec_junit_formatter', '0.2.2'
+  gem 'rails_12factor'
 end
 
 group :development do
