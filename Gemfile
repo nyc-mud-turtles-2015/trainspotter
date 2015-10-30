@@ -30,7 +30,7 @@ gem 'omniauth-auth0', '~> 1.1'
 
  gem "paperclip", "~> 4.3"
  gem 'aws-sdk-v1'
- gem 'puma'
+ # gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
