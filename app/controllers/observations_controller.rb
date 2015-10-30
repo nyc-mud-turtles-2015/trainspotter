@@ -4,6 +4,10 @@
     @observations = Observation.all
   end
 
+  def new
+    @observation = Observation.new
+  end
+
   def create
     @observation = Observation.new(valid_params)
     if @observation.save

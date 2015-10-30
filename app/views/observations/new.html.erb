@@ -4,9 +4,10 @@
 <h2>New Observation</h2>
 <%= form_for @observation, html: { multipart: true } do |f|%>
   <p><%= f.text_area :description, placeholder: 'Description', cols: '92', rows: '10' %></p>
-  <p><%= f.file_field :avatar %></p>
+  <p><%= f.file_field :image %></p>
+  <%= f.hidden_field :collection_id, value: 1%>
+  <%= f.hidden_field :curator_id, value: 1 %>
   <p><%= f.submit "Add" %></p>
-  <%= f.hidden_field :curator_id, value: rand(1..5) %>
-  <%= f.hidden_field :collection_id, value: rand(1..5) %>
 <% end %>
 </div>
+

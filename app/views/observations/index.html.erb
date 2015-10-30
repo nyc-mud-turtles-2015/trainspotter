@@ -1,0 +1,12 @@
+<ul class = "content" >
+
+<% @observations.each do |o| %>
+  <li><%= o.description %> </li>
+  <ul>
+    <%= image_tag o.image.url %>
+  </ul>
+<% end %>
+
+</ul>
+
+<%= button_to "Add Observations", new_observation_path, method: "get" %>
