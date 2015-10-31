@@ -1,7 +1,7 @@
 <% @collection.observations.each do |o| %>
     <li><%= link_to (image_tag o.image.url(:thumb)), collection_observation_path(@collection, o) %></li>
     <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
-      <%= button_to "Delete", collection_observation_path(@collection, o), :controller => "observations", :action => "destroy", :id => o.id, :method => :delete %>
+      <%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete %>
     <% end %>
  <%end%>
 
