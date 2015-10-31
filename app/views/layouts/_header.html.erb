@@ -7,5 +7,11 @@
   <% else %>
     <li><%= link_to 'Log in', login_path %></li>
   <% end %>
+    <li>
+      <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
+        <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
+        <%= button_tag "search", name: nil, type: "submit" %>
+        <% end %>
+    </li>
   </ul>
 </div>
