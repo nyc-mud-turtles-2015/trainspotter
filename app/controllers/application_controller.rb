@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!session[:uid]
+    current_user != nil
   end
 
 end
