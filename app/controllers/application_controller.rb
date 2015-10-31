@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find_by(uid: session[:uid]) if session[:uid]
+    @current_user ||= Curator.find_by(uid: session[:uid]) if session[:uid]
   end
 
   def logged_in?
-    current_user != nil
+    !!session[:uid]
   end
 
 end
