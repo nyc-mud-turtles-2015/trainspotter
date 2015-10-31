@@ -28,4 +28,10 @@
     params.require(:observation).permit(:description,:curator_id,:image, :collection_id)
   end
 
+  def destroy
+    collection = Collection.find(params[:collection_id ])
+    Observation.find(params[:id]).destroy
+    redirect_to collection_path(collection)
+  end
+
 end

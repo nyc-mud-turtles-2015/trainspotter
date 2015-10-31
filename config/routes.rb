@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :curators, only: [:show]
+
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
   get "/auth/auth0/callback" => "auth0#callback"
@@ -9,8 +11,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :collections, except: [:destroy] do
-    resources :observations, except: [:destroy]
+  resources :collections do
+    resources :observations
     get 'search', on: :collection, as: :search
   end
 

@@ -1,0 +1,11 @@
+<ul class = "content" >
+
+<% collections.each do |c| %>
+<li><h2><%= link_to c.title, collection_path(c) %></h2></li>
+  <% if belongs_to_current_user?(c) %>
+  <%= button_to "Delete", collection_path(c), :method => :delete %>
+  <% end %>
+<% end %>
+</ul>
+
+
