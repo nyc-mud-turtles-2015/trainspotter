@@ -12,4 +12,6 @@ class Collection < ActiveRecord::Base
   has_many :observations
 
   validates :title, :curator, presence: true
+
+
 end
