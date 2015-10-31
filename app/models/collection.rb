@@ -15,4 +15,8 @@ class Collection < ActiveRecord::Base
 
   validates :title, :curator, presence: true
 
+  def owned_by?(user)
+    self.curator_id == user.id
+  end
+
 end
