@@ -1,6 +1,6 @@
 class CuratorActionsController < ApplicationController
 
-  before_action :logged_in?, only: [:new, :create]
+  before_action :logged_in?, only: [:new, :create, :destroy]
 
   private
 
