@@ -1,3 +1,4 @@
+
 jason = Curator.create(name: "Jason")
 phil = Curator.create(name: "Phil")
 maggie = Curator.create(name: "Maggie")

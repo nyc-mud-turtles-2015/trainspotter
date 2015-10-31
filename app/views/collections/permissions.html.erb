@@ -1,0 +1,5 @@
+<h1>Permissions for collection <em><%= @collection.title %></em>:</h1>
+
+<h3>Visibility: <% if @collection.private %>Private (<%= link_to c.title, collection_path(c) %>
+
+  <% else %>Public<% end %></h3>
