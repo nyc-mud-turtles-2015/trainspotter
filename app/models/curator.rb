@@ -12,5 +12,27 @@ class Curator < ActiveRecord::Base
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
   has_many :collections
   has_many :observations
+  has_many :roles
+  has_many :authorized_collections, :through => :roles, :source => :collection
+  validates :name, presence: true
 
+  def can_create?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, can_create: true)
+  end
+
+  def can_read?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, can_read: true)
+  end
+
+  def can_update?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, can_update: true)
+  end
+
+  def can_invite?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, can_invite: true)
+  end
+
+  def admin?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, admin: true)
+  end
 end
