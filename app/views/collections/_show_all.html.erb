@@ -2,6 +2,11 @@
 
 <% collections.each do |c| %>
   <li><h2><%= link_to c.title, collection_path(c) %> </h2></li>
+  <% if current_user == c.curator %>
+  <%= button_to "Delete", { :controller => "collections", :action => "destroy", :id => c.id }, :method => :delete %>
+  <% end %>
 <% end %>
 
 </ul>
+
+

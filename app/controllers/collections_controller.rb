@@ -9,7 +9,7 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection= Collection.new(valid_params)
+    @collection = Collection.new(valid_params)
     if @collection.save
     else
       flash[:errors] = "Collection cannot be saved!"
@@ -29,6 +29,13 @@ class CollectionsController < ApplicationController
 
   def valid_params
     params.require(:collection).permit(:title,:curator_id)
+  end
+
+  def destroy
+    collection = Collection.find(params[:id])
+    collection.observations.each { |o| o.destroy }
+    collection.destroy
+    redirect_to collections_path
   end
 
 end
