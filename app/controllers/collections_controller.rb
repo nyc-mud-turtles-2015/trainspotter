@@ -30,17 +30,29 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
   end
 
-
-  def valid_params
-    params.require(:collection).permit(:title,:curator_id)
-  end
-
   def destroy
     session[:return_to] ||= request.referer
     collection = Collection.find(params[:id])
     collection.observations.each { |o| o.destroy }
     collection.destroy
     redirect_to session.delete(:return_to)
+  end
+
+  def update
+    @collection = Collection.find(params[:id])
+    @collection.update_attributes(valid_params)
+    if @collection.save
+    else
+      flash[:errors] = "Collection cannot be saved!"
+      redirect_to root_path
+    end
+    redirect_to collection_permissions_path(@collection)
+  end
+
+  private
+
+  def valid_params
+    params.require(:collection).permit(:title,:curator_id, :private, :description)
   end
 
 end
