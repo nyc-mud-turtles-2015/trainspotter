@@ -32,7 +32,6 @@ gem "paperclip", "~> 4.3"
 gem 'aws-sdk-v1'
 gem 'rails_12factor'
 gem 'pg_search'
-gem 'cancancan', '~> 1.10'
  # gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
