@@ -12,5 +12,8 @@ class Curator < ActiveRecord::Base
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
   has_many :collections
   has_many :observations
+  has_many :roles
+  has_many :authorized_collections, :through => :roles, :source => :collection
+  validates :name, presence: true
 
 end

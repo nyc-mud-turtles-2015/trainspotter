@@ -10,6 +10,8 @@ class Collection < ActiveRecord::Base
 
   belongs_to :curator
   has_many :observations
+  has_many :roles
+  has_many :authorized_users, :through => :roles, :source => :curator
 
   validates :title, :curator, presence: true
 
