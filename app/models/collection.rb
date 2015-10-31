@@ -13,5 +13,4 @@ class Collection < ActiveRecord::Base
 
   validates :title, :curator, presence: true
 
-
 end
