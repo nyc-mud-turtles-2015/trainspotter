@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :collections, except: [:destroy] do
     resources :observations, except: [:destroy]
+    get 'search', on: :collection, as: :search
   end
 
   root 'collections#index'
