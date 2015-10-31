@@ -7,14 +7,10 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<header>
-
-  <%= render 'layouts/header' %>
-
-</header>
 
 <body>
-<%= render partial: 'partials/header' %>
+
+<%= render partial: 'layouts/header' %>
 <%= yield %>
 
 </body>
