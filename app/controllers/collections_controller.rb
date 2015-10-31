@@ -26,6 +26,10 @@ class CollectionsController < ApplicationController
     @collections = Collection.search_collection(params[:c])
   end
 
+  def permissions
+    @collection = Collection.find(params[:id])
+  end
+
 
   def valid_params
     params.require(:collection).permit(:title,:curator_id)
