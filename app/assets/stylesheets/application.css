@@ -12,8 +12,19 @@
  *
  *= require_tree .
  *= require_self
+<<<<<<< HEAD
  #= require social-share-button
+=======
+ *= require foundation_and_overrides
+
+>>>>>>> add foundation gem and change button css
  */
+
+body li {
+
+list-style: none;
+
+}
 
 .observe-show {
   position: fixed;
@@ -33,3 +44,14 @@
   font-size: 30px;
 }
 
+button.file-upload > input[type='file'] {
+    cursor: pointer;
+    position: absolute;
+    font-size: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+}

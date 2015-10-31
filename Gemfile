@@ -36,7 +36,7 @@ gem 'social-share-button', '~> 0.1.8'
  # gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'foundation-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
