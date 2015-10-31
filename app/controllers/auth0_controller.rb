@@ -2,8 +2,8 @@ class Auth0Controller < ApplicationController
 
   def callback
     curator = Curator.find_or_create_by(uid: request.env['omniauth.auth']['uid'])
-    curator.avatar = request.env['omniauth.auth']['info']['image']
-    curator.name = request.env['omniauth.auth']['info']['name']
+    #Note: the name attribute is being updated properly, but the avatar attribute is not being updated properly
+    curator.update_attributes(avatar: request.env['omniauth.auth']['info']['image'], name: request.env['omniauth.auth']['info']['name'])
     curator.save
     session[:uid] = curator.uid
     redirect_to root_url

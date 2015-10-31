@@ -1,11 +1,15 @@
 <%= flash[:errors] %>
 
 <div class="form">
-<h2>New Collection</h2>
-<%= form_for @collection do |f|%>
-  <p><%= f.text_field :title, placeholder: 'title' %></p>
-  <%= f.hidden_field :curator_id, value: 1 %>
-  <p><%= f.submit "Add" %></p>
-<% end %>
+  <% if logged_in? %>
+    <h2>New Collection</h2>
+    <%= form_for @collection do |f|%>
+      <p><%= f.text_field :title, placeholder: 'title' %></p>
+      <%= f.hidden_field :curator_id, value: current_user.id %>
+      <p><%= f.submit "Add" %></p>
+    <% end %>
+  <% else %>
+    <h2><%= link_to 'Log in', login_path %> to create a new collection!</h2>
+  <% end %>
 </div>
 
