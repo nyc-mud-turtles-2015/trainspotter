@@ -19,4 +19,16 @@ class Collection < ActiveRecord::Base
     self.curator_id == user.id
   end
 
+  def public?
+    !self.private
+  end
+
+  def private?
+    self.private
+  end
+
+  def visible_to_user?(user)
+    self.public? || self.owned_by?(user)
+  end
+
 end
