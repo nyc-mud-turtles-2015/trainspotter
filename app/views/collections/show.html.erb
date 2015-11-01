@@ -9,7 +9,7 @@
   <% end %>
   <div class= "center-text"><%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
        <% @collection.observations.each do |o|%>
-    <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
+    <li class= "center-pic"><%= image_tag o.image.url(:medium)%></li>
     <li class= "center-text"><span><em><%= o.description %></span></em><li>
     <li class= "center-text"><span>Pitched by <%= o.curator.name %></span><li>
     <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
@@ -18,7 +18,7 @@
   <%end%>
 <% else %>
   <% @collection.observations.each do |o|%>
-    <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
+    <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
     <li><span><%= o.description %></span><li>
     <li><span><%= o.curator.name %></span><li>
   <%end%>
