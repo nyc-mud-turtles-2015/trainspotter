@@ -19,6 +19,14 @@ class Collection < ActiveRecord::Base
     self.curator_id == user.id
   end
 
+  def observations
+    self.observations.reject { |obs| obs.is_pending? }
+  end
+
+  def pending_observations
+    self.observations.select { |obs| obs.is_pending? }
+  end
+
   def public?
     !self.private
   end

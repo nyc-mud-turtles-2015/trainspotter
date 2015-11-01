@@ -1,3 +1,4 @@
+
 <div class = "content">
   <h2 class = "center-text"><%= @collection.title  %></h2>
   <div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></div>
@@ -23,3 +24,14 @@
     <li><span><%= o.curator.name %></span><li>
   <%end%>
 <% end %>
+
+<%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get" %>
+
+<!--
+<% if @collection.has_pending_observations? %>
+              <h5>You have pending observations to approve for this collection.</h5>
+              <% @collection.pending_observations.each do |o|%>
+                  <li><p>From <%=o.curator%>:<%= link_to (image_tag o.image.url(:thumb)), collection_observation_path(@collection, o) %></li>
+              <% end %>
+          <% end %> -->
+

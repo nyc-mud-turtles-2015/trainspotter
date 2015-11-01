@@ -4,4 +4,8 @@ module ViewHelper
     current_user == object.curator
   end
 
+  def has_pending_observations?(collection)
+    !collection.pending_observations.empty?
+  end
+
 end
