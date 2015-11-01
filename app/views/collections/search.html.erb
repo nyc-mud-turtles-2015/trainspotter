@@ -1,7 +1,7 @@
 <div class="center-text">
   <% if @collections.empty? %>
     <h2>No results found for '<%= "#{params[:c]}" %>'</h2>
-    <h2>Try a different word or browse leisurely!</h2>
+    <h4>Try a different word or browse leisurely!</h4>
   <% else %>
     <h2><%= "#{pluralize(@collections.size, 'result')} for '#{params[:c]}'" %></h2>
     <%= render partial: 'collections/search_results', collections: @collections, as: :collection %>
