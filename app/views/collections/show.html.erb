@@ -1,6 +1,6 @@
 <div class = "content">
-
-   <div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}", class: "radius small button") %></div>
+  <h2 class = "center-text"><%= @collection.title  %></h2>
+  <div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></div>
 
 <% if logged_in? %>
   <% if @collection.owned_by?(current_user) %>
