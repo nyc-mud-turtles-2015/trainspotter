@@ -2,7 +2,7 @@
   <% if @collection.owned_by?(current_user) %>
     <h5><%= link_to 'change collection permissions', collection_permissions_path(@collection) %></h5>
   <% end %>
-
+  <%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %>
   <% @collection.observations.each do |o|%>
     <li><%= link_to (image_tag o.image.url(:thumb)), collection_observation_path(@collection, o) %>by <%= o.curator.name %></li>
     <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
