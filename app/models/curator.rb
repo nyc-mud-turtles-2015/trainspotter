@@ -1,4 +1,10 @@
 class Curator < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_curator, :against => {
+    :name => 'A' },
+    :using => {
+      :tsearch => {:dictionary => "english"}
+    }
 
   has_attached_file :avatar,
     styles: {

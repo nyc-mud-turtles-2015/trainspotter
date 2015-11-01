@@ -1,0 +1,8 @@
+<div>
+  <% if @curators.empty? %>
+    <h2>No results found for '<%= "#{params[:c]}" %>'</h2>
+  <% else %>
+    <h2><%= "#{pluralize(@curators.size, 'result')} for '#{params[:c]}'" %></h2>
+    <%= render partial: 'curators/search_results', curators: @curators, as: :curator %>
+  <% end %>
+</div>
