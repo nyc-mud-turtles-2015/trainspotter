@@ -7,6 +7,11 @@ class CuratorsController < ApplicationController
 
   def search
     @curators = Curator.search_curator(params[:c])
+    if request.xhr?
+      render "search", layout: false
+    else
+      render "search"
+    end
   end
 
   def profile
