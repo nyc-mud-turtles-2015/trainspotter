@@ -1,1 +1,12 @@
-<h1> Trainspotter </h1>
+
+<div id = "welcome-logo">
+
+ <h1>Trainspotter</h1>
+
+<% if logged_in? %>
+ <div class= "center-text"><%= button_to "Start a collection now!", new_collection_path, method: "get", class: "radius small button"%></div>
+ <% else %>
+ <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%></div>
+ <% end %>
+
+</div>

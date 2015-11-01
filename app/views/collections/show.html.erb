@@ -8,7 +8,6 @@
     </div>
   <% end %>
   <div class= "center-text"><%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
-  <div class="row">
        <% @collection.observations.each do |o|%>
     <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
     <li class= "center-text"><span><%= o.description %></span><li>
