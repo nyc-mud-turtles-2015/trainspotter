@@ -3,7 +3,7 @@ $( document ).ready(function() {
    event.preventDefault();
     $.ajax({
       type: "GET",
-      url:  this.attr('action'),//"/curators/search",
+      url:  "/curators/search",
       data: $('#curators_search').serialize(),
       success: function(data) {
         console.log("success");
