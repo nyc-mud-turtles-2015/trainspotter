@@ -109,12 +109,11 @@ span{
   padding: 5%;
 }
 
-/*.image-thumb img{
+.image-thumb img{
   text-align: center;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
   -moz-border-radius: 20px;
-  background: url(http://link-to-your/image.jpg) no-repeat;
   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
   -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
@@ -123,11 +122,13 @@ span{
 .thumb-caption {
   text-align: center;
 }
-*/
+
 
 .collection-block{
-  padding-top: 5px;
+  padding-top: 10px;
   border: solid;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 .observe-delete{
