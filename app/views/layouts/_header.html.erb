@@ -1,5 +1,4 @@
-<div class = "nav">
-  <ul>
+<ul class = "breadcrumbs">
     <li><%= link_to 'Home', root_path %></li>
   <% if logged_in? %>
     <li><%= link_to 'Make a Collection!', new_collection_path %></li>
@@ -9,10 +8,42 @@
     <li><%= link_to 'Log in', login_path %></li>
   <% end %>
     <li>
+    </li>
+  </ul>
+<div class="row">
+    <div class="small-2 columns">
       <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
         <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
         <%= button_tag "search", name: nil, type: "submit" %>
         <% end %>
+      </div>
+</div>
+
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Trainspotter', root_path %></h1>
     </li>
   </ul>
-</div>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><a href="#">Right Button Active</a></li>
+      <li class="has-dropdown">
+        <% if logged_in? %>
+        <a href="#">Welcome, <%= current_user.name%>!</a>
+        <% end %>
+        <ul class="dropdown">
+          <li class="active"><a href="#">Active link in dropdown</a></li>
+          <li><%= link_to 'Log out', logout_path %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><a href="#">Left Nav Button</a></li>
+    </ul>
+  </section>
+</nav>
