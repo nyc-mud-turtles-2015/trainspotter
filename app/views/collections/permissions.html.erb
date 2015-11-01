@@ -19,13 +19,13 @@
       Public <%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
       <%= f.hidden_field :private, value: true %>
       <p class = "secure-text"><%= f.submit "make private", class: "radius small button"%></p>
-      <div class= "back_button"><%= button_to "Go Back", collection_path(@collection), method: "get", class: "radius small button secondary"%>
-      </div>
     <% end %>
     <% end %>
   </h3>
 <% else %>
-
   <h1>You need to <%= link_to 'log in', login_path %> to see this page, buddy!</h1>
 <% end %>
+
+   <div class= "center-text"><%= button_to "Go Back", collection_path(@collection), method: "get", class: "radius small button secondary"%>
+      </div>
 
