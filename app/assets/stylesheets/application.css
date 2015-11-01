@@ -20,6 +20,22 @@
 >>>>>>> add foundation gem and change button css
  */
 
+.visible-img img {
+    width:auto;
+    margin: auto !important;  /* !important to overwrite negative margin-left and margin-top foundation js gives for images in clearing*/
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+body li {
+
+list-style: none;
+
+}
+
+
 body li {
 
 list-style: none;
@@ -54,4 +70,48 @@ button.file-upload > input[type='file'] {
     height: 100%;
     width: 100%;
     border-radius: 25px;
+
+}
+
+.center-pic {
+  text-align: center;
+}
+
+.center-pic img{
+  border: 2px solid black;
+  text-align: center;
+}
+
+.center-text{
+  text-align: center;
+}
+
+span{
+    border: 2px solid black;
+    padding: 2px;
+}
+
+.content{
+  padding: 5%;
+}
+
+/*.image-thumb img{
+  text-align: center;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background: url(http://link-to-your/image.jpg) no-repeat;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.thumb-caption {
+  text-align: center;
+}
+*/
+
+.collection-block{
+  padding-top: 5px;
+  border: solid;
 }

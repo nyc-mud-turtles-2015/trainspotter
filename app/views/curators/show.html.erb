@@ -1,3 +1,7 @@
-<h1><%= @curator.name%></h1>
+<div class = "body">
+
+<h1><%= @curator.name%> <%= image_tag @curator.avatar.url %></h1>
 
 <%= render partial: 'collections/show_all', locals: { collections: @collections, profile: true } %>
+
+</div>

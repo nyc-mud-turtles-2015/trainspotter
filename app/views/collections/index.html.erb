@@ -1,36 +1,5 @@
+<div class = "content">
 <%= render partial: 'show_all', locals: { collections: @collections } %>
+</div>
 
-<%= button_to "Add Collections", new_collection_path, method: "get" %>
 
-<ul class = "content" >
-    <!--
-    small = mobile
-    medium = tablets
-    large = desktop
-    -->
-    <div class="row">
-      <% @collections.each do |c| %>
-        <div class="small-6 medium-4 large-2 columns" style="background: lightsalmon;"><h5><%= link_to c.title, collection_path(c) %></h5></div>
-    <% end %>
-    </div>
-
-<ul class="accordion" data-accordion >
-  <li class="accordion-navigation">
-    <a href="#panel1a">The Goal</a>
-    <div id="panel1a" class="content active">
-      See it. Snap it. Save it.
-    </div>
-  </li>
-  <li class="accordion-navigation">
-    <a href="#panel2a">Mission Statement</a>
-    <div id="panel2a" class="content">
-      Three DBC Students who want to give the world the gift of sharing quirks. Maggie Baker, Phil Sofia, and Jason Wang.
-    </div>
-  </li>
-  <li class="accordion-navigation">
-    <a href="#panel3a">Technologies used</a>
-    <div id="panel3a" class="content">
-      Ruby on Rails. Javascript. Foundation.
-    </div>
-  </li>
-</ul

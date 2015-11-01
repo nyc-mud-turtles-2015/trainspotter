@@ -1,20 +1,30 @@
-<ul class = "content" >
 <% if logged_in? %>
   <% collections.each do |c| %>
     <% if c.visible_to_user?(current_user) %>
-      <li><h2><span class="collection-title"><%= link_to c.title, collection_path(c)%></span> by <%=c.curator.name%></h2></li>
-        <% if belongs_to_current_user?(c) %>
-          <%= button_to "Delete", collection_path(c), :method => :delete %>
+    <div class = "collection-block">
+      <ul class="small-block-grid-2 large-block-grid-4" >
+        <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+        <li class = "thumb-caption"><%= link_to c.title, collection_path(c) %></h4></li>
+        <li>Curated by <%=c.curator.name%></li>
+          <%= button_to "Add Observations", new_collection_observation_path(c), method: "get", class: "radius small button"%>
+       <% if belongs_to_current_user?(c) %>
+          <%= button_to "Delete", collection_path(c), :method => :delete, class: "radius success small button"%>
         <% end %>
+      </ul>
+    </div>
     <% end %>
   <% end %>
 <% else %>
   <% collections.each do |c| %>
     <% if c.public? %>
       <li><h2><span class="collection-title"><%= link_to c.title, collection_path(c)%></span> by <%=c.curator.name%></h2></li>
+      <div class = "collection-block">
+        <ul class="small-block-grid-2 large-block-grid-4" >
+          <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+          <li class = "thumb-caption"><%= link_to c.title, collection_path(c) %></h4></li>
+          <li>Curated by <%=c.curator.name%></li>
+        </ul>
+      </div>
     <% end %>
   <% end %>
 <% end %>
-</ul>
-
-
