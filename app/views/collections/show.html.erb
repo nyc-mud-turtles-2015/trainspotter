@@ -1,55 +1,26 @@
-
-  <% if logged_in? %>
-    <% if @collection.owned_by?(current_user) %>
-      <h5><%= link_to 'change collection permissions', collection_permissions_path(@collection)%></h5>
-    <% end %>
-    <h5>Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></h5>
-    <% @collection.observations.each do |o|%>
-      <li><%= link_to (image_tag o.image.url(:thumb)), collection_observation_path(@collection, o) %></li>
-      <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
-        <%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete %>
-      <% end %>
-    <%end%>
-  <% else %>
-    <% @collection.observations.each do |o|%>
-      <li><%= link_to (image_tag o.image.url(:thumb)), collection_observation_path(@collection, o) %></li>
-    <%end%>
-
 <div class = "content">
 
+   <div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}", class: "radius small button") %></div>
+
 <% if logged_in? %>
-
   <% if @collection.owned_by?(current_user) %>
-
-  <div class= "center-text"><%= button_to "Change Permissions", collection_permissions_path(@collection), method: "get", class: "radius small button"%></div>
->>>>>>> initial convert to a foundations framework from MVP. Profile page only works with twitter so will remove profile picture for now. Seed file was made for local, but should be altered prior to being loaded to heroku.
+    <div class= "center-text"><%= button_to "Change Permissions", collection_permissions_path(@collection), method: "get", class: "radius small button"%>
+    </div>
   <% end %>
-  <%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get" %>
-
-
-
-<div class="row">
-    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <% @collection.observations.each do |o|%>
-      <li><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
- <%end%>
-    </ul>
-
   <div class= "center-text"><%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
-
   <div class="row">
        <% @collection.observations.each do |o|%>
     <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
     <li class= "center-text"><span><%= o.description %></span><li>
+    <li class= "center-text"><span>Pitched by <%= o.curator.name %></span><li>
     <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
-      <li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button" %><li>
+      <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button" %><li></div>
     <% end %>
   <%end%>
 <% else %>
   <% @collection.observations.each do |o|%>
     <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
     <li><span><%= o.description %></span><li>
+    <li><span><%= o.curator.name %></span><li>
   <%end%>
 <% end %>
-<div>
-</div>

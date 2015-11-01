@@ -20,6 +20,10 @@
 >>>>>>> add foundation gem and change button css
  */
 
+h1{
+  font-family: 'Fredoka One', cursive;
+}
+
 .visible-img img {
     width:auto;
     margin: auto !important;  /* !important to overwrite negative margin-left and margin-top foundation js gives for images in clearing*/
@@ -75,6 +79,7 @@ button.file-upload > input[type='file'] {
 
 .center-pic {
   text-align: center;
+  padding: 5px;
 }
 
 .center-pic img{
@@ -84,6 +89,7 @@ button.file-upload > input[type='file'] {
 
 .center-text{
   text-align: center;
+  padding: 5px;
 }
 
 span{
@@ -114,4 +120,8 @@ span{
 .collection-block{
   padding-top: 5px;
   border: solid;
+}
+
+.observe-delete{
+  padding-top: 10px;
 }
