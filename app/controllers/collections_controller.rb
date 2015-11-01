@@ -1,7 +1,7 @@
 class CollectionsController < ApplicationController
 
   def welcome
-
+    @collections = Collection.all
   end
 
   def index
