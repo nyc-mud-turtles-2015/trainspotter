@@ -9,7 +9,9 @@ class Collection < ActiveRecord::Base
     }
 
   belongs_to :curator
+
   has_many :observations
+
   has_many :roles
   has_many :authorized_users, :through => :roles, :source => :curator
 
@@ -19,7 +21,7 @@ class Collection < ActiveRecord::Base
     self.curator_id == user.id
   end
 
-  def observations
+  def approved_observations
     self.observations.reject { |obs| obs.is_pending? }
   end
 
