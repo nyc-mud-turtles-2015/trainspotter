@@ -11,10 +11,10 @@
 
   def create
     collection = Collection.find(params[:collection_id])
-    @observation = Observation.new(observation_params)
-    if @observation.save
+    observation = Observation.new(observation_params)
+    if observation.save
       if pending_param
-        PendingObservation.create(observation_id: @observation.id)
+        PendingObservation.create(observation_id: observation.id)
       end
     else
       flash[:errors] = "Error"

@@ -28,12 +28,6 @@
       <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
     <% end %>
   <%end%>
-<% else %>
-  <% @collection.observations.each do |o|%>
-    <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
-    <li><span><%= o.description %></span><li>
-    <li><span><%= o.curator.name %></span><li>
-  <%end%>
 <% end %>
 
 
