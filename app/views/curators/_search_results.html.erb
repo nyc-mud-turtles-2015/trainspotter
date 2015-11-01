@@ -1,0 +1,7 @@
+<ul class = "content" >
+
+<% @curators.each do |c| %>
+  <li><h2><%= link_to c.name, curator_path(c) %> </h2></li>
+<% end %>
+
+</ul>

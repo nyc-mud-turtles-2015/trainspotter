@@ -1,6 +1,6 @@
   <% if logged_in? %>
     <% if @collection.owned_by?(current_user) %>
-      <h5><%= link_to 'change collection permissions', collection_permissions_path(@collection) %></h5>
+      <h5><%= link_to 'change collection permissions', collection_permissions_path(@collection)%></h5>
     <% end %>
     <h5>Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></h5>
     <% @collection.observations.each do |o|%>

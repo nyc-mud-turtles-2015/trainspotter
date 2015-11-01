@@ -5,6 +5,10 @@ class CuratorsController < ApplicationController
     @collections = @curator.collections
   end
 
+  def search
+    @curators = Curator.search_curator(params[:c])
+  end
+
   def profile
     @user = current_user
     render "show"

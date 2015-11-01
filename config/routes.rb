@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :curators, only: [:show]
+  resources :curators, only: [:show] do
+    get 'search', on: :collection, as: :search
+  end
 
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
