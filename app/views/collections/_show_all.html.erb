@@ -1,13 +1,13 @@
 <% if logged_in? %>
   <% collections.each do |c| %>
     <% if c.visible_to_user?(current_user) %>
+        <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
     <div class = "collection-block">
       <ul class="small-block-grid-2 large-block-grid-4" >
-        <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
         <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
-          <li><%= button_to "Add Observations", new_collection_observation_path(c), method: "get", class: "radius small button"%></li>
+         <li><%= button_to "Add", new_collection_observation_path(c), method: "get", class: "radius small button"%></li>
        <% if belongs_to_current_user?(c) %>
-          <%= button_to "Delete", collection_path(c), :method => :delete, class: "radius alert small button"%>
+          <li><%= button_to "Delete", collection_path(c), :method => :delete, class: "radius alert small button"%></li>
         <% end %>
       </ul>
     </div>
@@ -20,7 +20,7 @@
       <div class = "collection-block">
         <ul class="small-block-grid-2 large-block-grid-4" >
           <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
-          <h4><li class = "thumb-caption"><%= link_to c.title, collection_path(c) %></h4>
+          <li><%= button_to "Contribute!", login_path, method: "get", class: "radius small button"%></li>
         </ul>
       </div>
     <% end %>
