@@ -4,8 +4,12 @@
         <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
     <div class = "collection-block">
       <ul class="small-block-grid-2 large-block-grid-4" >
-        <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
-         <li><%= button_to "Add", new_collection_observation_path(c), method: "get", class: "radius small button"%></li>
+        <% if c.observations.first %>
+          <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+        <% else %>
+          <li class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></li>
+        <% end %>
+        <li><%= button_to "Add", new_collection_observation_path(c), method: "get", class: "radius small button"%></li>
        <% if belongs_to_current_user?(c) %>
           <li><%= button_to "Delete", collection_path(c), :method => :delete, class: "radius alert small button"%></li>
         <% end %>
@@ -19,7 +23,11 @@
       <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
       <div class = "collection-block">
         <ul class="small-block-grid-2 large-block-grid-4" >
-          <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+          <% if c.observations.first %>
+            <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+          <% else %>
+            <li class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></li>
+          <% end %>
           <li><%= button_to "Contribute!", login_path, method: "get", class: "radius small button"%></li>
         </ul>
       </div>
