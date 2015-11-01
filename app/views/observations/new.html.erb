@@ -1,6 +1,7 @@
 <%= flash[:errors] %>
 
 <div class="form">
+<% if logged_in? %>
 <h2>New Observation</h2>
 <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
   <p><%= f.text_area :description, placeholder: 'Description', cols: '92', rows: '10' %></p>
@@ -8,6 +9,9 @@
   <%= f.hidden_field :collection_id, value: @collection.id%>
   <%= f.hidden_field :curator_id, value: current_user.id %>
   <p><%= f.submit "Add" %></p>
+  <%end%>
+<% else %>
+  <h2><%= link_to 'Log in', login_path %> to add an observation.</h2>
 <% end %>
 </div>
 
