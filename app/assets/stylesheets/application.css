@@ -20,8 +20,16 @@
 >>>>>>> add foundation gem and change button css
  */
 
-h1,h2,h3,h4,h5,h6{
+h1{
   font-family: 'Fredoka One', cursive;
+}
+
+h1 a{
+  color: black;
+}
+
+h2,h3,h4,h5,h6{
+  font-family: 'Roboto Mono', ;
 }
 
 #welcome-logo {
@@ -47,11 +55,8 @@ list-style: none;
 
 }
 
-
-body li {
-
-list-style: none;
-
+body {
+  font-family: 'Cutive Mono', ;
 }
 
 .observe-show {
