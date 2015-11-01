@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Trainspotter</title>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
+    <title><%= content_for?(:title) ? yield(:title) : "Trainspotter" %></title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= stylesheet_link_tag    "application", media: 'all'  %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <%= render partial: 'layouts/header' %>
+    <%= yield %>
 
-<%= render partial: 'layouts/header' %>
+  </body>
 
-<%= yield %>
-
-</body>
+  <footer>
+    <p class = "center-text">Team Trainspotter Inc.</p>
+  </footer>
 </html>
+
+
+
+
+
+

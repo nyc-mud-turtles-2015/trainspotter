@@ -1,0 +1,33 @@
+<div id = "welcome-logo">
+
+<h1 id = "logo-text"><%= link_to 'Trainspotter', collections_path%></h1>
+
+<img src ="/images/grunge-camera.gif">
+
+<% if logged_in? %>
+ <div class= "center-text"><%= button_to "Start a collection now!", new_collection_path, method: "get", class: "radius small button"%></div>
+ <% else %>
+ <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%></div>
+ <% end %>
+
+<ul class="accordion" data-accordion>
+  <li class="accordion-navigation">
+    <a href="#panel1a">What is this?</a>
+    <div id="panel1a" class="content active">
+      See it. Snap it. Share it.
+      </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel2a">Who we are</a>
+    <div id="panel2a" class="content">
+      The TrainspottingApp team is made up of Maggie Baker, Phil Sofia, and Jason Wang. We are DevBootCamp students and made this project in order to showcase our last twelve weeks of coding without sleep.
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel3a">What technologies did we use?</a>
+    <div id="panel3a" class="content">
+      We used Ruby on Rails and Javascript as our primary languages. For the front end, we also used Foundation.
+    </div>
+  </li>
+</ul>
+</div>

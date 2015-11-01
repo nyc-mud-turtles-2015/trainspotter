@@ -1,5 +1,9 @@
 class CollectionsController < ApplicationController
 
+  def welcome
+    @collections = Collection.all
+  end
+
   def index
     @collections = Collection.all
   end
@@ -15,7 +19,7 @@ class CollectionsController < ApplicationController
       flash[:errors] = "Collection cannot be saved!"
       redirect_to new_collection_path
     end
-    redirect_to collections_path
+    redirect_to new_collection_observation_path(@collection)
   end
 
   def show

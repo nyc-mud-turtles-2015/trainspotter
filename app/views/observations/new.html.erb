@@ -2,16 +2,21 @@
 
 <div class="form">
 <% if logged_in? %>
-<h2>New Observation</h2>
+<h2 class = "center-text">New Observation</h2>
+
 <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
-  <p><%= f.text_area :description, placeholder: 'Description', cols: '92', rows: '10' %></p>
-  <p><%= f.file_field :image %></p>
+<div class="3 columns">
+  <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
+<div class = "center-text"><button class= "file-upload" >Upload File
+  <%= f.file_field :image %>
+</button></div>
   <%= f.hidden_field :collection_id, value: @collection.id%>
   <%= f.hidden_field :curator_id, value: current_user.id %>
-  <p><%= f.submit "Add" %></p>
+<div class = "center-text"><%= f.submit "Pitch your observation!", class: "radius success large button" %></div>
   <%end%>
 <% else %>
   <h2><%= link_to 'Log in', login_path %> to add an observation.</h2>
+
 <% end %>
 </div>
 

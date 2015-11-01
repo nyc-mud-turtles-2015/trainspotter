@@ -1,3 +1,7 @@
-<h1><%= @curator.name%></h1>
+<div class = "body">
+
+<h2 class = "center-text"><%= @curator.name%></h2>
 
 <%= render partial: 'collections/show_all', locals: { collections: @collections, profile: true } %>
+
+</div>

@@ -1,18 +1,46 @@
-<div class = "nav">
-  <ul>
-    <li><%= link_to 'Home', root_path %></li>
-  <% if logged_in? %>
-    <li><%= link_to 'Make a Collection!', new_collection_path %></li>
-    <li><%= link_to 'Log out', logout_path %></li>
-    <li>Welcome, <%= current_user.name%>!</li>
-  <% else %>
-    <li><%= link_to 'Log in', login_path %></li>
-  <% end %>
-    <li>
-      <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
-        <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
-        <%= button_tag "search", name: nil, type: "submit" %>
-        <% end %>
+<div class="fixed">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Trainspotter', root_path %></h1>
     </li>
+    <li class="divider"></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+         <% if logged_in? %>
+        <a href="#"><%= current_user.name%></a>
+        <ul class="dropdown">
+          <li><%= link_to 'Profile', curator_path(current_user) %></li>
+          <li><%= link_to 'Log out', logout_path %></li>
+        </ul>
+      </li>
+    </ul>
+<% end%>
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <% if logged_in? %>
+      <li><%= link_to 'Create', new_collection_path %></li>
+      <%else%>
+      <li><%= link_to 'Login', login_path %></li>
+      <% end%>
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
+              <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
+            </div>
+            <div class="large-4 small-3 columns">
+             <%= button_tag "Go!", name: nil, class: "radius small button", type: "submit" %></div>
+              <% end %>
+          </div>
+        </li>
+        <li><%= link_to 'Skim', collections_path %></li>
+    </ul>
+  </section>
+</nav>
 </div>

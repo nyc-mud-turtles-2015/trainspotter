@@ -6,7 +6,7 @@ class Auth0Controller < ApplicationController
     curator.update_attributes(avatar: request.env['omniauth.auth']['info']['image'], name: request.env['omniauth.auth']['info']['name'])
     curator.save
     session[:uid] = curator.uid
-    redirect_to root_url
+    redirect_to collections_path
   end
 
   def failure
