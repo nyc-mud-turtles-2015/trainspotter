@@ -14,6 +14,8 @@
               <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
               <li class= "center-text"><span><em><%= o.description %></span></em><li>
               <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+              <div id = "delete-observe"><li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), :method => :put, class: "radius small button alert" %><li></div>
+              <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
         <% end %>
     <% end %>
   <% end %>

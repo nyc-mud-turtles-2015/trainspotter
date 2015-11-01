@@ -26,9 +26,20 @@
     @observation = Observation.find(params[:id])
   end
 
+  def update
+    collection = Collection.find(params[:collection_id])
+    observation = Observation.find(params[:id])
+    observation.pending_observation.destroy
+    redirect_to collection_path(collection)
+  end
+
   def destroy
     collection = Collection.find(params[:collection_id ])
-    Observation.find(params[:id]).destroy
+    observation = Observation.find(params[:id])
+    if observation.is_pending?
+      observation.pending_observation.destroy
+    end
+    observation.destroy
     redirect_to collection_path(collection)
   end
 
