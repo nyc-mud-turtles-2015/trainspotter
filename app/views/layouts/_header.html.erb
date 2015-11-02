@@ -24,7 +24,7 @@
     <!-- Left Nav Section -->
     <ul class="left">
       <% if logged_in? %>
-      <li><%= link_to 'Create', new_collection_path %></li>
+      <li><%= link_to 'Make', new_collection_path %></li>
       <%else%>
       <li><%= link_to 'Login', login_path %></li>
       <% end%>
@@ -39,7 +39,7 @@
               <% end %>
           </div>
         </li>
-        <li><%= link_to 'Skim', collections_path %></li>
+        <li><%= link_to 'Browse', collections_path %></li>
     </ul>
   </section>
 </nav>
