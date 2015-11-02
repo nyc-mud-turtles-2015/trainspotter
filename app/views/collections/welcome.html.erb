@@ -4,6 +4,15 @@
 
 <img src ="/images/banner.gif">
 
+<div class="search-bar">
+<strong class="show-for-small-only">  <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
+    <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
+     <%= button_tag "Go!", name: nil, class: "radius small button", type: "submit" %>
+      <% end %>
+    </div>
+</strong>
+</div>
+
 <% if logged_in? %>
  <div class= "center-text"><%= button_to "Start a collection now!", new_collection_path, method: "get", class: "radius small button"%></div>
  <% else %>
