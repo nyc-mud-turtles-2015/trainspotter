@@ -2,7 +2,7 @@ class CuratorsController < ApplicationController
 
   def show
     @curator = Curator.find(params[:id])
-    @collections = @curator.collections
+    @collections = @curator.collections.order(updated_at: :desc)
   end
 
   def search
