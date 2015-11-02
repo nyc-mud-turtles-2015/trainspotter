@@ -7,5 +7,12 @@ class Observation < ActiveRecord::Base
   belongs_to :collection, touch: true
 
   validates :curator, :collection, presence: true
+  has_one :pending_observation
+
+  validates :curator, :collection, presence: true
+
+  def is_pending?
+    self.pending_observation != nil
+  end
 
 end

@@ -1,25 +1,35 @@
+
 <div class = "content">
   <h2 class = "center-text"><%= @collection.title  %></h2>
   <div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></div>
+  <div class= "center-text"><%= button_to "Add an Observation", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
 
 <% if logged_in? %>
   <% if @collection.owned_by?(current_user) %>
-    <div class= "center-text"><%= button_to "Change Permissions", collection_permissions_path(@collection), method: "get", class: "radius small button alert"%>
+    <div class= "center-text"><%= button_to "Edit Collection Permissions", collection_permissions_path(@collection), method: "get", class: "radius small button alert"%>
     </div>
+    <% if has_pending_observations?(@collection) %>
+      <h5 class="center-text">You have pending observations to approve for this collection.</h5>
+        <% @collection.pending_observations.each do |o|%>
+              <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
+              <li class= "center-text"><span><em><%= o.description %></span></em><li>
+              <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+              <div id = "delete-observe"><li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), :method => :put, class: "radius small button alert" %><li></div>
+              <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+        <% end %>
+    <% end %>
   <% end %>
-  <div class= "center-text"><%= button_to "Add Observations", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
-       <% @collection.observations.each do |o|%>
+      <% @collection.approved_observations.each do |o|%>
     <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
     <li class= "center-text"><span><em><%= o.description %></span></em><li>
-    <li class= "center-text"><span>Pitched by <%= o.curator.name %></span><li>
+    <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
     <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
       <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
     <% end %>
   <%end%>
-<% else %>
-  <% @collection.observations.each do |o|%>
-    <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
-    <li><span><%= o.description %></span><li>
-    <li><span><%= o.curator.name %></span><li>
-  <%end%>
+
 <% end %>
+
+
+
+

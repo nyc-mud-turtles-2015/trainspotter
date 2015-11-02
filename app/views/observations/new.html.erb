@@ -2,21 +2,30 @@
 
 <div class="form">
 <% if logged_in? %>
-<h2 class = "center-text">New Observation</h2>
 
-<%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
-<div class="3 columns">
-  <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
-<div class = "center-text"><button class= "file-upload" >Upload
-  <%= f.file_field :image %>
-</button></div>
-  <%= f.hidden_field :collection_id, value: @collection.id%>
-  <%= f.hidden_field :curator_id, value: current_user.id %>
-<div class = "center-text"><%= f.submit "Pitch your observation!", class: "radius success large button" %></div>
-  <%end%>
+  <h2 class = "center-text">New Observation</h2>
+
+  <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
+  <div class="3 columns">
+
+  <div class = "center-text"><button class= "file-upload" >Upload a file
+    <%= f.file_field :image %>
+  </button>
+   <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
+  </div>
+      <%= f.hidden_field :collection_id, value: @collection.id%>
+      <%= f.hidden_field :curator_id, value: current_user.id %>
+      <% if current_user_can_add?(@collection) %>
+        <%= f.hidden_field :pending, value: false %>
+        <div class = "center-text"><%= f.submit "Add Observation", class: "radius success large button" %></div>
+      <% else %>
+        <%= f.hidden_field :pending, value: true %>
+        <div class = "center-text"><%= f.submit "Send a request to #{@collection.curator.name} to add this observation", class: "radius success large button" %></div>
+      <%end%>
+  <% end %>
+
 <% else %>
   <h2><%= link_to 'Log in', login_path %> to add an observation.</h2>
-
 <% end %>
 </div>
 

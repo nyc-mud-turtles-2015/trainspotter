@@ -11,8 +11,11 @@
 
   def create
     collection = Collection.find(params[:collection_id])
-    @observation = Observation.new(valid_params)
-    if @observation.save
+    observation = Observation.new(observation_params)
+    if observation.save
+      if pending_param[:pending] == "true"
+        PendingObservation.create(observation_id: observation.id)
+      end
     else
       flash[:errors] = "Error"
     end
@@ -23,15 +26,31 @@
     @observation = Observation.find(params[:id])
   end
 
-
-  def valid_params
-    params.require(:observation).permit(:description,:curator_id,:image, :collection_id)
+  def update
+    collection = Collection.find(params[:collection_id])
+    observation = Observation.find(params[:id])
+    observation.pending_observation.destroy
+    redirect_to collection_path(collection)
   end
 
   def destroy
     collection = Collection.find(params[:collection_id ])
-    Observation.find(params[:id]).destroy
+    observation = Observation.find(params[:id])
+    if observation.is_pending?
+      observation.pending_observation.destroy
+    end
+    observation.destroy
     redirect_to collection_path(collection)
+  end
+
+  private
+
+  def observation_params
+    params.require(:observation).permit(:description,:curator_id,:image, :collection_id)
+  end
+
+  def pending_param
+    params.require(:observation).permit(:pending)
   end
 
 end
