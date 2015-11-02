@@ -6,9 +6,10 @@
   <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
   <div class="3 columns">
   <div class = "center-text"><%= (image_tag 'camera.png') %></div>
-  <div class ="center-text"><button class="file-upload" >Attach a file
+  <div class ="center-text"><button class="file-upload">Add a photo
     <%= f.file_field :image %>
   </button>
+  <div><span id="fileName"><em>No photo added yet</em></span></div>
    <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
   </div>
       <%= f.hidden_field :collection_id, value: @collection.id%>
