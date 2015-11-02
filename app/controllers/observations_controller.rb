@@ -15,7 +15,9 @@
     if observation.save
       if pending_param[:pending] == "true"
         PendingObservation.create(observation_id: observation.id)
+
       end
+      flash[:notice] = "Your sighting has been sent to #{collection.curator.name} for approval."
     else
       flash[:errors] = "Error"
     end
