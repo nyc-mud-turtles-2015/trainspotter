@@ -2,7 +2,7 @@
 
 <div class="form">
 <% if logged_in? %>
-  <h2 class = "center-text">New Observation</h2>
+  <h2 class = "center-text">New Sighting</h2>
 
   <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
   <div class="3 columns">
@@ -18,7 +18,7 @@
       <%= f.hidden_field :curator_id, value: current_user.id %>
       <% if current_user_can_add?(@collection) %>
         <%= f.hidden_field :pending, value: false %>
-        <div class = "center-text"><%= f.submit "Add Observation", class: "radius success large button" %></div>
+        <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
       <% else %>
         <%= f.hidden_field :pending, value: true %>
         <div class = "center-text"><%= f.submit "Pitch to #{@collection.curator.name}'s Collection", class: "radius success medium button" %></div>
@@ -26,7 +26,7 @@
   <% end %>
 
 <% else %>
-  <h2><%= link_to 'Log in', login_path %> to add an observation.</h2>
+  <h2><%= link_to 'Log in', login_path %> to add a sighting.</h2>
 <% end %>
 </div>
 
