@@ -4,19 +4,13 @@
   <h2 class = "center-text">Permissions for <em><%= @collection.title %></em></h2>
   <h3 class = "center-text">Visibility:
     <% if @collection.private %>
-    Private
-    <p>Find a co-curator:
-      <%= form_tag(search_curators_path, method: "get", enforce_utf8: false) do %>
-        <%= text_field_tag(:c, "", placeholder: "Find a curator") %>
-        <%= button_tag "search", name: nil, type: "submit" %>
-      <% end %>
-    </p>
+    Private (only visible to you)
       <%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
       <%= f.hidden_field :private, value: false %>
       <p class = "secure-text"><%= f.submit "make public", class: "radius small button"%></p>
     <% end %>
     <% else %>
-      Public <%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
+      Public (visible to everyone)<%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
       <%= f.hidden_field :private, value: true %>
       <p class = "secure-text"><%= f.submit "make private", class: "radius small button"%></p>
     <% end %>
