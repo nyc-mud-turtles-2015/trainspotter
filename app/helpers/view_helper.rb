@@ -8,6 +8,10 @@ module ViewHelper
     !collection.pending_observations.empty?
   end
 
+  def has_approved_observations?(collection)
+    !collection.approved_observations.empty?
+  end
+
   def current_user_can_add?(collection)
     current_user.can_create?(collection) || collection.owned_by?(current_user) || current_user.admin?(collection)
   end
