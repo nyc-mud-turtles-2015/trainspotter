@@ -1,11 +1,11 @@
 class CollectionsController < ApplicationController
 
   def welcome
-    @collections = Collection.all
+    @collections = Collection.order(updated_at: :desc)
   end
 
   def index
-    @collections = Collection.all
+    @collections = Collection.order(updated_at: :desc)
   end
 
   def new
