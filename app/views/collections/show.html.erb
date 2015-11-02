@@ -19,21 +19,23 @@
       <% end %>
     <% end %>
     <% if @collection.visible_to_user?(current_user) %>
-      <% @collection.approved_observations.each do |o|%>
-        <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
-        <li class= "center-text"><span><em><%= o.description %></span></em><li>
-        <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
-        <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
-          <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
-        <% end %>
+      <% if has_approved_observations?(@collection) %>
+        <% @collection.approved_observations.each do |o|%>
+          <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
+          <li class= "center-text"><span><em><%= o.description %></span></em><li>
+          <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+          <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
+            <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+          <% end %>
+        <%end%>
       <%end%>
     <% else %>
       <h2>This is a private collection. Only users with viewing permission can view.</h2>
     <%end%>
   <% else %>
     <% if @collection.public? %>
-      <% if @collection.observations.first %>
-        <% @collection.observations.each do |o|%>
+      <% if @collection.approved_observations.first %>
+        <% @collection.approved_observations.each do |o|%>
           <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
           <li class= "center-text"><span><em><%= o.description %></span></em><li>
           <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
