@@ -19,7 +19,6 @@
         <% end %>
     <% end %>
   <% end %>
-  <div class= "center-text"><%= button_to "Add an Observation", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
       <% @collection.approved_observations.each do |o|%>
     <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
     <li class= "center-text"><span><em><%= o.description %></span></em><li>
