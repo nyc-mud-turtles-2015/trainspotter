@@ -1,7 +1,17 @@
 <ul class = "content" >
 
 <% @curators.each do |c| %>
-  <li><h2><%= link_to c.name, curator_path(c) %> </h2></li>
+  <li><h2><%= link_to c.name, curator_path(c) %></h2>
+    <h3>Current permission level: <%= c.permission_level(@collection) %><h3>
+    <%= form_for(@role, url: "/roles", method: 'post') do |f| %>
+    <h4>Change permission level to:</h4>
+    <%= select_tag "role[access_level]", '<option>none</option><option name="can_read">view only</option><option name="can_create">view & add</option><option name="can_invite">view & add & invite</option><option name="admin">admin(all powerful)</option>'.html_safe, value: 1 %>
+      <%= hidden_field_tag(:collection_id, @collection.id) %>
+      <%= hidden_field_tag(:curator_id, c.id) %>
+      <div class = "center-text"><input type="submit" value="update permissions">
+      <% end %></div>
+    </form>
+  </li>
 <% end %>
 
 </ul>
