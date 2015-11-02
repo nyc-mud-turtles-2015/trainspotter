@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% if logged_in? %>
   <% collections.each do |c| %>
     <% if c.visible_to_user?(current_user) %>
@@ -21,6 +22,7 @@
   <% collections.each do |c| %>
     <% if c.public? %>
       <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.public_name%></h4></li>
+
       <div class = "collection-block">
         <ul class="small-block-grid-2 large-block-grid-4" >
           <% if c.observations.first %>
@@ -28,9 +30,24 @@
           <% else %>
             <li class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></li>
           <% end %>
-          <li><%= button_to "Contribute!", login_path, method: "get", class: "radius small button"%></li>
         </ul>
       </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% collections.each do |c| %>
+      <% if c.public? %>
+        <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
+        <div class = "collection-block">
+          <ul class="small-block-grid-2 large-block-grid-4" >
+            <% if c.observations.first %>
+              <li class = "image-thumb"><%= link_to (image_tag c.observations.first.image.url(:thumb)), collection_path(c) %></li>
+            <% else %>
+              <li class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
