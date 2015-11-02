@@ -1,15 +1,12 @@
 <%= flash[:errors] %>
 
-<div class="form">
+<div class="form" id="pitch_observation">
 <% if logged_in? %>
   <h2 class = "center-text">New Sighting</h2>
-
   <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
   <div class="3 columns">
-
-   <div class = "center-text"><%= (image_tag 'camera.png') %></div>
-
-  <div class = "center-text"><button class= "file-upload" >Attach a file
+  <div class = "center-text"><%= (image_tag 'camera.png') %></div>
+  <div class ="center-text"><button class="file-upload" >Attach a file
     <%= f.file_field :image %>
   </button>
    <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
@@ -21,10 +18,9 @@
         <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
       <% else %>
         <%= f.hidden_field :pending, value: true %>
-        <div class = "center-text"><%= f.submit "Pitch to #{@collection.curator.name}'s Collection", class: "radius success medium button" %></div>
+        <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.name}'s Collection", class: "radius success medium button" %></div>
       <%end%>
   <% end %>
-
 <% else %>
   <h2><%= link_to 'Log in', login_path %> to add a sighting.</h2>
 <% end %>
