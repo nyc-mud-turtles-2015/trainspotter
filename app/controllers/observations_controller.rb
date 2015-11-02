@@ -13,7 +13,7 @@
     collection = Collection.find(params[:collection_id])
     observation = Observation.new(observation_params)
     if observation.save
-      if pending_param
+      if pending_param[:pending] == "true"
         PendingObservation.create(observation_id: observation.id)
       end
     else
