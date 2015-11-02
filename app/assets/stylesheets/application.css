@@ -40,6 +40,12 @@ h2,h3,h4,h5,h6{
   opacity: 0.4;
 }
 
+
+.only-text{
+  font-family: 'Belgrano', serif;
+  text-align: center;
+}
+
 .visible-img img {
     width:auto;
     margin: auto !important;  /* !important to overwrite negative margin-left and margin-top foundation js gives for images in clearing*/
@@ -116,7 +122,6 @@ span{
 }
 
 .image-thumb img{
-  text-align: center;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 20px;
@@ -130,11 +135,9 @@ span{
 }
 
 
-.collection-block{
-  padding-top: 10px;
+.collection-block img{
   border: solid;
-  padding-left: 5px;
-  padding-right: 5px;
+  text-align: center;
 }
 
 .observe-delete{
