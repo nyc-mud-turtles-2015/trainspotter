@@ -6,11 +6,13 @@ class CuratorsController < ApplicationController
   end
 
   def search
-    @curators = Curator.search_curator(params[:c])
+    @role = Role.new
+    @collection = Collection.find(params[:collection_id])
     if request.xhr?
-      render "search", layout: false
+      @curators = Curator.search_curator(params[:c])
+      render layout: false
     else
-      render "search"
+      @curators = Curator.search_curator(params[:c])
     end
   end
 
@@ -18,5 +20,4 @@ class CuratorsController < ApplicationController
     @user = current_user
     render "show"
   end
-
 end
