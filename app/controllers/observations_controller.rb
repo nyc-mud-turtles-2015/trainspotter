@@ -1,7 +1,7 @@
   class ObservationsController < ApplicationController
 
   def index
-    @observations = Observation.all
+    @observations = Observation.order(updated_at: :desc)
   end
 
   def new

@@ -22,11 +22,11 @@ class Collection < ActiveRecord::Base
   end
 
   def approved_observations
-    self.observations.reject { |obs| obs.is_pending? }
+    self.observations.order(updated_at: :desc).reject { |obs| obs.is_pending? }
   end
 
   def pending_observations
-    self.observations.select { |obs| obs.is_pending? }
+    self.observations.order(updated_at: :desc).select { |obs| obs.is_pending? }
   end
 
   def public?
