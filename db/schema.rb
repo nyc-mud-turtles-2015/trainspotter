@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031193814) do
+ActiveRecord::Schema.define(version: 20151102004808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,16 +54,19 @@ ActiveRecord::Schema.define(version: 20151031193814) do
   add_index "observations", ["collection_id"], name: "index_observations_on_collection_id", using: :btree
   add_index "observations", ["curator_id"], name: "index_observations_on_curator_id", using: :btree
 
+  create_table "permissions", force: :cascade do |t|
+    t.string   "level_name",   null: false
+    t.integer  "level_number", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer  "curator_id"
     t.integer  "collection_id"
-    t.boolean  "admin"
-    t.boolean  "can_read"
-    t.boolean  "can_create"
-    t.boolean  "can_update"
-    t.boolean  "can_invite"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "permissions_id"
   end
 
   add_index "roles", ["curator_id", "collection_id"], name: "index_roles_on_curator_id_and_collection_id", unique: true, using: :btree

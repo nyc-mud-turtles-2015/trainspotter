@@ -4,5 +4,6 @@ class AddPermissionsTable < ActiveRecord::Migration
       t.string :level_name, null: false
       t.integer :level_number, null: false, uniqueness: true
       t.timestamps null: false
+    end
   end
 end
