@@ -1,7 +1,7 @@
 class Curator < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_curator, :against => {
-    :name => 'A' },
+    :name => 'A', :username => 'B' },
     :using => {
       :tsearch => {:dictionary => "english"}
     }
@@ -44,5 +44,13 @@ class Curator < ActiveRecord::Base
 
   def is_user?(user)
     self.id == user.id
+  end
+
+  def public_name
+    if self.username
+      self.username
+    else
+      self.name
+    end
   end
 end
