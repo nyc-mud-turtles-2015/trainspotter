@@ -1,6 +1,7 @@
 <div class = "body">
 
-<h2 class = "center-text"><%= @curator.name%></h2>
+<h2 class = "center-text"><%= @curator.name %></h2>
+<% if @curator.username %><h3 class = "center-text"><%= @curator.username %></h3><% else %><h5 class = "center-text">give yourself a curator name</h5><% end %>
 
 <%= render partial: 'collections/show_all', locals: { collections: @collections, profile: true } %>
 
