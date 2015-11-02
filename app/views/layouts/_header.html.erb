@@ -13,7 +13,7 @@
     <ul class="right">
       <li class="has-dropdown">
          <% if logged_in? %>
-        <a href="#"><%= current_user.name%></a>
+        <a href="#"><%= current_user.public_name%></a>
         <ul class="dropdown">
           <li><%= link_to 'Profile', curator_path(current_user) %></li>
           <li><%= link_to 'Log out', logout_path %></li>

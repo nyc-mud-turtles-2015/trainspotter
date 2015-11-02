@@ -1,27 +1,28 @@
 <div class = "body">
 
-<h2 class = "center-text"><%= @curator.name %></h2>
-<% if @curator.is_user?(current_user) %>
-  <% if @curator.username %><h3 class = "center-text">username: <%= @curator.username %></h3><%= form_for @curator do |f|%>
-    <div class="row">
-    <div class="3 columns">
-      <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
-    </div>
-    </div>
-      <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
-    <% end %><% else %><h5 class = "center-text">give yourself a username:</h5>
+<h2 class = "center-text"><%= @curator.public_name %></h2>
+<% if logged_in? %>
+  <% if @curator.is_user?(current_user) %>
+    <% if @curator.username %><h3 class = "center-text">username: <%= @curator.username %></h3><%= form_for @curator do |f|%>
+      <div class="row">
+      <div class="3 columns">
+        <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
+      </div>
+      </div>
+        <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
+      <% end %><% else %><h5 class = "center-text">give yourself a username:</h5>
 
-  <%= form_for @curator do |f|%>
-    <div class="row">
-    <div class="3 columns">
-      <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
-    </div>
-    </div>
-      <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
+    <%= form_for @curator do |f|%>
+      <div class="row">
+      <div class="3 columns">
+        <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
+      </div>
+      </div>
+        <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
-
 <%= render partial: 'collections/show_all', locals: { collections: @collections, profile: true } %>
 
 </div>
