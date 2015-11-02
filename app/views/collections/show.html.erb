@@ -27,6 +27,8 @@
         <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
       <% end %>
     <%end%>
+  <% else %>
+    <h2>This is a private collection. Only users with viewing permission can view.</h2>
   <%end%>
 <% else %>
   <% if @collection.public? %>
