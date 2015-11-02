@@ -2,11 +2,12 @@
 
 <div class="form">
 <% if logged_in? %>
-
   <h2 class = "center-text">New Observation</h2>
 
   <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
   <div class="3 columns">
+
+   <div class = "center-text"><%= (image_tag 'camera.png') %></div>
 
   <div class = "center-text"><button class= "file-upload" >Attach a file
     <%= f.file_field :image %>
