@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <% collections.each do |c| %>
     <% if c.visible_to_user?(current_user) %>
-        <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
+        <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.public_name%></h4></li>
     <div class = "collection-block">
       <ul class="small-block-grid-2 large-block-grid-4" >
         <% if c.observations.first %>
@@ -20,7 +20,7 @@
 <% else %>
   <% collections.each do |c| %>
     <% if c.public? %>
-      <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.name%></h4></li>
+      <li><h4><%= link_to c.title, collection_path(c)%> by <%=c.curator.public_name%></h4></li>
       <div class = "collection-block">
         <ul class="small-block-grid-2 large-block-grid-4" >
           <% if c.observations.first %>

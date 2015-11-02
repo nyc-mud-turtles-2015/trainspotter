@@ -18,7 +18,7 @@
         <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
       <% else %>
         <%= f.hidden_field :pending, value: true %>
-        <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.name}'s Collection", class: "radius success medium button" %></div>
+        <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.public_name}'s Collection", class: "radius success medium button" %></div>
       <%end%>
   <% end %>
 <% else %>

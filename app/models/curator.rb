@@ -1,7 +1,7 @@
 class Curator < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_curator, :against => {
-    :name => 'A' },
+    :name => 'A', :username => 'B' },
     :using => {
       :tsearch => {:dictionary => "english"}
     }
@@ -40,5 +40,17 @@ class Curator < ActiveRecord::Base
 
   def admin?(coll)
     Role.find_by(curator_id: self.id, collection_id: coll.id, admin: true)
+  end
+
+  def is_user?(user)
+    self.id == user.id
+  end
+
+  def public_name
+    if self.username
+      self.username
+    else
+      self.name
+    end
   end
 end

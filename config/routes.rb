@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :curators, only: [:show] do
+  resources :curators, only: [:show, :update] do
     get 'search', on: :collection, as: :search
   end
 
