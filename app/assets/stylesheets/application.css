@@ -40,6 +40,9 @@ h2,h3,h4,h5,h6{
   opacity: 0.4;
 }
 
+.div-header{
+  padding: 5px;
+}
 
 .only-text{
   font-family: 'Belgrano', serif;
