@@ -17,7 +17,8 @@ class Curator < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
   has_many :collections
-  has_many :observations
+  has_many :observations_made, :foreign_key => 'curator_id', :class_name => "Observation"
+  has_many :collection_observations, :through => :collections, :source => :observations
   has_many :roles
   has_many :authorized_collections, :through => :roles, :source => :collection
   validates :name, presence: true
@@ -46,8 +47,12 @@ class Curator < ActiveRecord::Base
     self.id == user.id
   end
 
+  def has_pending_sightings?
+    self.collection_observations.where(pending: true).order(updated_at: :desc).any?
+  end
+
   def public_name
-    if self.username
+    if self.usernameqa
       self.username
     else
       self.name

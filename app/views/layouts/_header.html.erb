@@ -11,10 +11,13 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="has-dropdown">
          <% if logged_in? %>
-        <a href="#"><%= current_user.public_name%></a>
-        <ul class="dropdown">
+          <% if current_user.has_pending_sightings? %>
+            <li><%= link_to 'You have pending sightings to approve!', curator_path(current_user) %></li>
+          <% end %>
+          <li class="has-dropdown">
+          <a href="#"><%= current_user.public_name%></a>
+          <ul class="dropdown">
           <li><%= link_to 'Profile', curator_path(current_user) %></li>
           <li><%= link_to 'Log out', logout_path %></li>
         </ul>
