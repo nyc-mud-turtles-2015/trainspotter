@@ -18,7 +18,7 @@
         observation.save
         flash[:notice] = "Your sighting has been added."
       else
-        flash[:notice] = "Your sighting has been sent to #{collection.curator.name} for approval."
+        flash[:notice] = "Your sighting has been sent to #{collection.curator.public_name} for approval."
       end
     else
       flash[:errors] = "Whoops! There was an error. Please try again"
