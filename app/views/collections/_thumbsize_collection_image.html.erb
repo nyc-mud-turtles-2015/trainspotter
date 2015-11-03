@@ -3,6 +3,3 @@
 <% else %>
   <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
 <% end %>
-<div class="category-info">
-  <h6><%= link_to c.shortened_title, collection_path(c)%></h6>
-</div>

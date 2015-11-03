@@ -1,65 +1,19 @@
 <% if logged_in? %>
-<% collections.each_with_index do |c, i| %>
-  <% if c.visible_to_user?(current_user) %>
-    <div class="large-4 small-6 columns">
-      <% if c.observations.last && c.observations.last.image_file_name.present?%>
-        <% if c.observations.last.approved? %>
-          <div class = "image-thumb"><%= link_to (image_tag c.observations.last.image.url(:thumb)), collection_path(c) %></div>
-        <% else %>
-           <div class = "image-thumb"><%= link_to (image_tag c.observations[-2].image.url(:thumb)), collection_path(c) %></div>
-        <% end %>
-      <% else %>
-      <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
-      <% end %>
-          <div class="category-info">
-            <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
-              <div class="subheader">
-                <% if belongs_to_current_user?(c) %>
-                 <ul class="accordion" data-accordion>
-                  <li class="accordion-navigation">
-                    <a href="#panel1a-<%= i %>">Permissions</a>
-                    <div id="panel1a-<%= i %>" class="content">
-                      <%= link_to 'edit', collection_permissions_path(c), method: "get"%>
-                    </div>
-                  </li>
-                  <li class="accordion-navigation">
-                    <a href="#panel2a-<%= i %>">Delete</a>
-                    <div id="panel2a-<%= i %>" class="content">
-                       <%= link_to "Confirm", collection_path(c), :method => :delete %>
-                    </div>
-                  </li>
-                </ul>
-              <% end %>
-            </div>
-        </div>
+  <% collections.each_with_index do |c, i| %>
+    <% if c.visible_to_user?(current_user) %>
+      <div class="large-4 small-6 columns">
+        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_permissions', locals: { c: c, i: i } %>
       </div>
-    </div>
-  <%end%>
-<%end%>
-  <% else %>
-    <% collections.each do |c| %>
-      <% if c.public? %>
-        <div class="large-4 small-6 columns">
-      <% if c.observations.last && c.observations.last.image_file_name.present?%>
-          <% if c.observations.last.approved? %>
-            <div class = "image-thumb"><%= link_to (image_tag c.observations.last.image.url(:thumb)), collection_path(c) %></div>
-          <% else %>
-            <div class = "image-thumb"><%= link_to (image_tag c.observations[-2].image.url(:thumb)), collection_path(c) %></div>
-          <% end %>
-      <% else %>
-          <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
-      <% end %>
-          <div class="category-info">
-          <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.public_name%></h6>
-        </div>
-        </div>
-        </div>
-      <%end%>
     <%end%>
   <%end%>
-
-
-
-
-
+<% else %>
+  <% collections.each do |c| %>
+    <% if c.public? %>
+      <div class="large-4 small-6 columns">
+        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
+      </div>
+    <%end%>
+  <%end%>
+<%end%>

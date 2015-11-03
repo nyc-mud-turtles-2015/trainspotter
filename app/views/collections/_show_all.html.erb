@@ -2,7 +2,8 @@
   <% collections.each do |c| %>
     <div class="large-4 small-6 columns">
       <% if c.visible_to_user?(current_user) %>
-        <%= render partial: 'thumbsize_collection', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
       <%end%>
     </div>
   <%end%>
@@ -10,7 +11,8 @@
   <% collections.each do |c| %>
     <div class="large-4 small-6 columns">
       <% if c.public? %>
-        <%= render partial: 'thumbsize_collection', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
       <%end%>
     </div>
   <%end%>
