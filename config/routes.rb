@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
+  root 'collections#welcome'
+
   resources :curators, only: [:show, :update] do
+    get 'search', on: :collection, as: :search
+  end
+
+  resources :collections do
+    resources :observations
     get 'search', on: :collection, as: :search
   end
 
@@ -10,17 +17,14 @@ Rails.application.routes.draw do
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
   get 'collections/:id/permissions', :to => 'collections#permissions', :as => :collection_permissions
+  get "/404", :to => "errors#not_found"
+  get "/422", :to => "errors#unacceptable"
+  get "/500", :to => "errors#internal_error"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :collections do
-    resources :observations
-    get 'search', on: :collection, as: :search
-  end
-
-  root 'collections#welcome'
 
 
   # Example of regular route:
