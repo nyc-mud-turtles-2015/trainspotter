@@ -37,7 +37,8 @@ class CollectionsController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     collection = Collection.find(params[:id])
-    collection.observations.each { |o| o.destroy }
+    collection.observations.delete_all
+    collection.roles.delete_all
     collection.destroy
     redirect_to session.delete(:return_to)
   end
