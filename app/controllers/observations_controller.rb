@@ -11,15 +11,16 @@
 
   def create
     collection = Collection.find(params[:collection_id])
-    observation = Observation.new(observation_params)
+    observation = collection.observations.build(observation_params)
     if observation.save
-      if pending_param[:pending] == "true"
-        PendingObservation.create(observation_id: observation.id)
-
+      if collection.user_can_add?(current_user)
+        observation.update_attribute(:pending, false)
+        flash[:notice] = "Your sighting has been added."
+      else
+        flash[:notice] = "Your addition has been sent to #{collection.curator.name} for approval."
       end
-      flash[:notice] = "Your addition to this collection has been sent to #{collection.curator.name} for approval."
     else
-      flash[:errors] = "Error"
+      flash[:errors] = "Whoops! There was an error. Please try again"
     end
     redirect_to collection
   end
@@ -37,11 +38,7 @@
 
   def destroy
     collection = Collection.find(params[:collection_id ])
-    observation = Observation.find(params[:id])
-    if observation.is_pending?
-      observation.pending_observation.destroy
-    end
-    observation.destroy
+    Observation.find(params[:id]).destroy
     redirect_to collection_path(collection)
   end
 
@@ -49,10 +46,6 @@
 
   def observation_params
     params.require(:observation).permit(:description,:image, :collection_id).merge({curator_id: current_user.id})
-  end
-
-  def pending_param
-    params.require(:observation).permit(:pending)
   end
 
 end

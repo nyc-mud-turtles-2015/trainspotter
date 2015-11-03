@@ -37,7 +37,7 @@ class Collection < ActiveRecord::Base
     !self.approved_observations.empty?
   end
 
-  def current_user_can_add?(user)
+  def user_can_add?(user)
     user.can_create?(self) || self.owned_by?(user) || user.admin?(self)
   end
 
