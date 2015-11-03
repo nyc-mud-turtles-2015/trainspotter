@@ -5,12 +5,12 @@
   <% if logged_in? %>
     <% if @collection.owned_by?(current_user) %>
       <%= render partial: 'edit_collection_permissions', locals: { collection: @collection } %>
-      <% if @collection.has_pending_observations? %>
+      <% if @collection.pending_observations.any? %>
         <%= render partial: 'pending_observations', locals: { collection: @collection } %>
       <% end %>
     <% end %>
     <% if @collection.visible_to_user?(current_user) %>
-      <% if @collection.has_approved_observations? %>
+      <% if @collection.approved_observations.any? %>
         <% @collection.approved_observations.each do |o|%>
           <%= render partial: 'observations/observation_show_on_collection', locals: { o: o } %>
         <% end %>

@@ -22,19 +22,11 @@ class Collection < ActiveRecord::Base
   end
 
   def approved_observations
-    self.observations.order(updated_at: :desc).reject { |obs| obs.is_pending? }
+    self.observations.where(pending: false).order(updated_at: :desc)
   end
 
   def pending_observations
-    self.observations.order(updated_at: :desc).select { |obs| obs.is_pending? }
-  end
-
-  def has_pending_observations?
-    self.pending_observations.any?
-  end
-
-  def has_approved_observations?
-    !self.approved_observations.empty?
+    self.observations.where(pending: true).order(updated_at: :desc)
   end
 
   def user_can_add?(user)

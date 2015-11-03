@@ -11,8 +11,8 @@ class Observation < ActiveRecord::Base
 
   validates :curator, :collection, presence: true
 
-  def is_pending?
-    self.pending_observation != nil
+  def approved?
+    !self.pending
   end
 
 end

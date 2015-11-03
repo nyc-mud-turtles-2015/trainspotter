@@ -17,7 +17,7 @@
         observation.update_attribute(:pending, false)
         flash[:notice] = "Your sighting has been added."
       else
-        flash[:notice] = "Your addition has been sent to #{collection.curator.name} for approval."
+        flash[:notice] = "Your sighting has been sent to #{collection.curator.name} for approval."
       end
     else
       flash[:errors] = "Whoops! There was an error. Please try again"
