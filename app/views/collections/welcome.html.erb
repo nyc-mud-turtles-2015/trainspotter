@@ -14,7 +14,7 @@
 </div>
 
 <% if logged_in? %>
- <div class= "center-text"><%= button_to "Start a collection now!", new_collection_path, method: "get", class: "radius small button"%></div>
+ <div class= "center-text"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "radius small button"%></div>
  <% else %>
  <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%></div>
  <% end %>

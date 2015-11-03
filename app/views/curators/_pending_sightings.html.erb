@@ -1,0 +1,14 @@
+<h5 class = "center-text">You have pending sightings to approve in
+
+<% curator.collections_pending.each do |pending_collection| %>
+  <% if curator.collections_pending.length == 1 %>
+      <%= link_to pending_collection.title, collection_path(pending_collection)%>.
+  <% else %>
+      <% if curator.collections_pending.last != pending_collection %>
+        <%= link_to pending_collection.title, collection_path(pending_collection)%>,
+      <% else %>
+        and <%= link_to pending_collection.title, collection_path(pending_collection)%>.
+      <% end %>
+  <% end %>
+<%end%>
+</h5>
