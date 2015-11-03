@@ -2,15 +2,7 @@
   <% collections.each do |c| %>
     <div class="large-4 small-6 columns">
       <% if c.visible_to_user?(current_user) %>
-        <% if collection_image?(c) %>
-            <div class = "image-thumb"><%= link_to (image_tag collection_thumb_image(c)), collection_path(c) %></div>
-        <% else %>
-            <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
-        <% end %>
-        <div class="category-info">
-          <h5><%= link_to c.title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.public_name%></h6>
-        </div>
+        <%= render partial: 'thumbsize_collection', locals: { c: c } %>
       <%end%>
     </div>
   <%end%>
@@ -18,15 +10,7 @@
   <% collections.each do |c| %>
     <div class="large-4 small-6 columns">
       <% if c.public? %>
-        <% if collection_image?(c) %>
-          <div class = "image-thumb"><%= link_to (image_tag collection_thumb_image(c)), collection_path(c) %></div>
-        <% else %>
-          <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
-        <% end %>
-        <div class="category-info">
-          <h5><%= link_to c.title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.public_name%></h6>
-        </div>
+        <%= render partial: 'thumbsize_collection', locals: { c: c } %>
       <%end%>
     </div>
   <%end%>
