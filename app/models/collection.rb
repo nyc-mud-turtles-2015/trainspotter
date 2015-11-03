@@ -41,4 +41,13 @@ class Collection < ActiveRecord::Base
     self.public? || self.owned_by?(user)
   end
 
+  def shortened_title
+    title = self.title
+    if title.length > 22
+      return title[0..21] + "..."
+    else
+      return title
+    end
+  end
+
 end
