@@ -3,15 +3,15 @@
 <% if @collection.owned_by?(current_user) %>
   <h2 class = "center-text">Permissions for <em><%= @collection.title %></em></h2>
   <h3 class = "center-text">Visibility:
-    <% if @collection.private %>
+    <% if @collection.is_private %>
     Private (only visible to you)
       <%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
-      <%= f.hidden_field :private, value: false %>
+      <%= f.hidden_field :is_private, value: false %>
       <p class = "secure-text"><%= f.submit "make public", class: "radius small button"%></p>
     <% end %>
     <% else %>
       Public (visible to everyone)<%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
-      <%= f.hidden_field :private, value: true %>
+      <%= f.hidden_field :is_private, value: true %>
       <p class = "secure-text"><%= f.submit "make private", class: "radius small button"%></p>
     <% end %>
     <% end %>

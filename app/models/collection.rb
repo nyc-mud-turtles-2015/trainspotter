@@ -34,11 +34,7 @@ class Collection < ActiveRecord::Base
   end
 
   def public?
-    !self.private
-  end
-
-  def private?
-    self.private
+    !self.is_private
   end
 
   def visible_to_user?(user)
