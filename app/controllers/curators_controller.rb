@@ -17,11 +17,11 @@ class CuratorsController < ApplicationController
   def update
     @curator = Curator.find(current_user.id)
     if @curator.update_attributes(valid_params)
+      redirect_to curator_path(@curator)
     else
-      flash[:errors] = "Curator cannot be saved!"
-      redirect_to root_path
+      flash[:errors] = "Username is already taken! Please try another name."
+      redirect_to curator_path(@curator)
     end
-    redirect_to curator_path(@curator)
   end
 
   private
