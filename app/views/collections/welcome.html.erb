@@ -1,43 +1,41 @@
 <div id = "welcome-logo">
-
-<h1 id = "logo-text"><%= link_to 'Trainspotter', collections_path%></h1>
-
-<img src ="/images/banner.gif">
-
-<div class="search-bar">
-<strong class="show-for-small-only">  <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
-    <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
-     <%= button_tag "Go!", name: nil, class: "radius small button", type: "submit" %>
+  <h1 id = "logo-text"><%= link_to 'Trainspotter', collections_path%>
+  </h1>
+  <img src ="/images/banner.gif">
+  <div class="search-bar">
+    <strong class="show-for-small-only">
+      <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
+        <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
+        <%= button_tag "Go!", name: nil, class: "radius small button", type: "submit" %>
       <% end %>
-    </div>
-</strong>
+    </strong>
+  </div>
 </div>
-
 <% if logged_in? %>
- <div class= "center-text"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "radius small button"%></div>
- <% else %>
- <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%></div>
- <% end %>
-
+  <div class= "center-text"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "radius small button"%></div>
+<% else %>
+  <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%>
+  </div>
+<% end %>
 <div class= "center-text">
-<ul class="accordion" data-accordion>
-  <li class="accordion-navigation">
-    <a href="#panel1a">About</a>
-    <div id="panel1a" class="content active">
-      Spot it. Save it. Share it.
+  <ul class="accordion" data-accordion>
+    <li class="accordion-navigation">
+      <a href="#panel1a">About</a>
+      <div id="panel1a" class="content active">
+        Spot it. Save it. Share it.
+        </div>
+    </li>
+    <li class="accordion-navigation">
+      <a href="#panel2a">The Team</a>
+      <div id="panel2a" class="content">
+        Team Trainspotter is Phil Sofia, Jason Wang and Maggie Baker. We made this app in 7 days for our final project at Dev Bootcamp.
       </div>
-  </li>
-  <li class="accordion-navigation">
-    <a href="#panel2a">The Team</a>
-    <div id="panel2a" class="content">
-      Team Trainspotter is Phil Sofia, Jason Wang and Maggie Baker. We made this app in 7 days for our final project at Dev Bootcamp.
-    </div>
-  </li>
-  <li class="accordion-navigation">
-    <a href="#panel3a">Technologies</a>
-    <div id="panel3a" class="content">
-      We used Ruby on Rails and Javascript as our primary languages. On the front end, we also used Foundation.
-    </div>
-  </li>
-</ul>
+    </li>
+    <li class="accordion-navigation">
+      <a href="#panel3a">Technologies</a>
+      <div id="panel3a" class="content">
+        We used Ruby on Rails and Javascript as our primary languages. On the front end, we also used Foundation.
+      </div>
+    </li>
+  </ul>
 </div>

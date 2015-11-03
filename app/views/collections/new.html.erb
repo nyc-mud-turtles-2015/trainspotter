@@ -8,7 +8,8 @@
           <%= f.text_field :title, placeholder: 'title' %>
         </div>
       </div>
-      <div class = "center-text"><%= f.submit "Add", class: "radius success small button" %></div>
+      <div class = "center-text"><%= f.submit "Add", class: "radius success small button" %>
+      </div>
     <% end %>
   <% else %>
     <h2><%= link_to 'Log in', login_path %> to create a new collection.</h2>

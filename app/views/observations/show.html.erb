@@ -1,27 +1,25 @@
 <div class = "div-header"></div>
   <div class = "observe-show">
-
-   <% if @observation.image_file_name.nil?%>
+    <% if @observation.image_file_name.nil?%>
       <h4 class= "only-text"><span><em><%= @observation.description %></span></em></h4>
-      <div class= "center-text"><span>Added by <%= link_to @observation.curator.public_name, curator_path(@observation.curator) %></span></div>
-   <% else %>
+      <div class= "center-text">
+        <span>Added by <%= link_to @observation.curator.public_name, curator_path(@observation.curator) %></span>
+      </div>
+    <% else %>
       <div class= "center-pic"><%= image_tag @observation.image.url %></div>
       <h5 class= "center-text"><span><em><%= @observation.description %></span></em></h5>
     <%end%>
-       <h6 class="subheader">Spotted at <%=@observation.created_at.strftime("%a, %d %b %Y %H:%M:%S")%> by <%= @observation.curator.public_name %></h6>
-  <div class = "div-header"></div>
+    <h6 class="subheader">Spotted at <%=@observation.created_at.strftime("%a, %d %b %Y %H:%M:%S")%> by <%= @observation.curator.public_name %></h6>
+    <div class = "div-header"></div>
     <% if logged_in? %>
-        <% if belongs_to_current_user?(@observation) || belongs_to_current_user?(@observation.collection) %>
-          <div class = "center-text">
-            <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Delete</button><br>
-              <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
-                <li><%= link_to 'Delete', collection_observation_path(@observation.collection_id, @observation), :method => :delete%></li>
-              </ul>
-          </div>
-        <%end%>
+      <% if belongs_to_current_user?(@observation) || belongs_to_current_user?(@observation.collection) %>
+        <div class = "center-text">
+          <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Delete</button><br>
+          <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
+            <li><%= link_to 'Delete', collection_observation_path(@observation.collection_id, @observation), :method => :delete%></li>
+          </ul>
+        </div>
       <%end%>
-    </div>
+    <%end%>
   </div>
 </div>
-
-

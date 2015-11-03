@@ -1,26 +1,30 @@
 <%= flash[:errors] %>
-
 <div class="form" id="pitch_observation">
-<% if logged_in? %>
-  <h2 class = "center-text">New Sighting</h2>
-  <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
-  <div class="3 columns">
-  <div class = "center-text"><%= (image_tag 'camera.png') %></div>
-  <div class ="center-text"><button class="file-upload">Add a photo
-    <%= f.file_field :image %>
-  </button>
-  <div><span id="fileName"><em>No photo added yet</em></span></div>
-   <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
-  </div>
-      <%= f.hidden_field :collection_id, value: @collection.id%>
-      <% if @collection.user_can_add?(current_user) %>
-        <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
-      <% else %>
-        <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.public_name}", class: "radius success medium button" %></div>
-      <%end%>
+  <% if logged_in? %>
+    <h2 class = "center-text">New Sighting</h2>
+    <%= form_for @observation, url: collection_observations_path(@collection),  html: { multipart: true } do |f|%>
+      <div class="3 columns">
+        <div class = "center-text"><%= (image_tag 'camera.png') %>
+        </div>
+        <div class ="center-text">
+          <button class="file-upload">Add a photo
+            <%= f.file_field :image %>
+          </button>
+          <div>
+            <span id="fileName"><em>No photo added yet</em></span>
+          </div>
+          <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %>
+          </div>
+        </div>
+        <%= f.hidden_field :collection_id, value: @collection.id%>
+          <% if @collection.user_can_add?(current_user) %>
+            <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
+          <% else %>
+            <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.public_name}", class: "radius success medium button" %></div>
+          <%end%>
+    <% end %>
+  <% else %>
+    <h2><%= link_to 'Log in', login_path %> to add a sighting.</h2>
   <% end %>
-<% else %>
-  <h2><%= link_to 'Log in', login_path %> to add a sighting.</h2>
-<% end %>
 </div>
 

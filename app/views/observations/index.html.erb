@@ -1,12 +1,9 @@
 <ul class = "content" >
-
-<% @observations.each do |o| %>
-  <li><%= o.description %> </li>
-  <ul>
-    <%= link_to (image_tag o.image.url(:thumb)), collection_observation(o.id) %>
-  </ul>
-<% end %>
-
+  <% @observations.each do |o| %>
+    <li><%= o.description %> </li>
+    <ul>
+      <%= link_to (image_tag o.image.url(:thumb)), collection_observation(o.id) %>
+    </ul>
+  <% end %>
 </ul>
-
 <%= button_to "Add Sightings", new_collection_observation, method: "get" %>
