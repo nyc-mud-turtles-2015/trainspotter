@@ -3,18 +3,21 @@
   <% if c.visible_to_user?(current_user) %>
     <div class="large-4 small-6 columns">
       <% if c.observations.last && c.observations.last.image_file_name.present?%>
+        <% if c.observations.last.is_pending? == false %>
           <div class = "image-thumb"><%= link_to (image_tag c.observations.last.image.url(:thumb)), collection_path(c) %></div>
-            <% else %>
-          <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
+        <% else %>
+           <div class = "image-thumb"><%= link_to (image_tag c.observations[-2].image.url(:thumb)), collection_path(c) %></div>
+        <% end %>
+      <% else %>
+      <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
       <% end %>
     <div class="category-info">
     <h5><%= link_to c.title, collection_path(c)%></h5>
     <h6 class="subheader"><%=c.curator.public_name%></h6>
     </div>
     </div>
-    </div>
-    <%end%>
-    <%end%>
+  <%end%>
+<%end%>
   <% else %>
     <% collections.each do |c| %>
       <% if c.public? %>
@@ -33,6 +36,7 @@
     <%end%>
     <%end%>
     <%end%>
+  <%end%>
 
 
 
