@@ -1,3 +1,4 @@
-<div class = "div-header">
-</div>
+<div class = "div-header"></div>
+<div class ="paginate"><%= will_paginate @collections, renderer: FoundationPagination::Rails %></div>
+<div class = "div-header"></div>
 <%= render partial: 'show_all', locals: { collections: @collections } %>

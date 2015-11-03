@@ -49,5 +49,4 @@ class Collection < ActiveRecord::Base
       return title
     end
   end
-
 end

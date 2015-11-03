@@ -53,6 +53,10 @@ class CollectionsController < ApplicationController
     redirect_to collection_permissions_path(@collection)
   end
 
+  def index
+     @collections = Collection.paginate(page: params[:page], per_page: 10)
+  end
+
   private
 
   def valid_params
