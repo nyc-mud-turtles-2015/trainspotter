@@ -1,3 +1,6 @@
-<div class= "center-text">
-  <%= button_to "Edit Collection Permissions", collection_permissions_path(@collection), method: "get", class: "radius small button alert"%>
+<div class = "center-text">
+  <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Permissions</button><br>
+    <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
+      <li><%= link_to 'Edit Permissions', collection_permissions_path(@collection), method: "get"%></li>
+    </ul>
 </div>
