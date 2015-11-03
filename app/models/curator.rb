@@ -51,8 +51,12 @@ class Curator < ActiveRecord::Base
     self.collection_observations.where(pending: true).order(updated_at: :desc).any?
   end
 
+  def collections_pending
+    self.collections.select {|c| c.pending_observations.any?}
+  end
+
   def public_name
-    if self.usernameqa
+    if self.username
       self.username
     else
       self.name
