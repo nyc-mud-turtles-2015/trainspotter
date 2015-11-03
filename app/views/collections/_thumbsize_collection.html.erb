@@ -4,6 +4,5 @@
   <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
 <% end %>
 <div class="category-info">
-  <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
-  <h6 class="subheader"><%=c.curator.public_name%></h6>
+  <h6><%= link_to c.shortened_title, collection_path(c)%></h6>
 </div>
