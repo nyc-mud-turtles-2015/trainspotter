@@ -14,7 +14,8 @@
     observation = collection.observations.build(observation_params)
     if observation.save
       if collection.user_can_add?(current_user)
-        observation.update_attribute(:pending, false)
+        observation.pending = false
+        observation.save
         flash[:notice] = "Your sighting has been added."
       else
         flash[:notice] = "Your sighting has been sent to #{collection.curator.name} for approval."
