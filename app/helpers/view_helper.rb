@@ -4,8 +4,8 @@ module ViewHelper
   end
 
   def collection_image?(coll)
-    if coll.approved_observations.last
-      if coll.approved_observations.last.image_file_name.present?
+    if coll.approved_observations.first
+      if coll.approved_observations.first.image_file_name.present?
         return true
       end
     end
@@ -13,6 +13,6 @@ module ViewHelper
   end
 
   def collection_thumb_image(coll)
-    coll.observations.last.image.url(:thumb)
+    coll.approved_observations.first.image.url(:thumb)
   end
 end
