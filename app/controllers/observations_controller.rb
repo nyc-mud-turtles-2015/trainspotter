@@ -21,7 +21,7 @@
         flash[:notice] = "Your sighting has been sent to #{collection.curator.public_name} for approval."
       end
     else
-      flash[:errors] = "Whoops! There was an error. Please try again"
+      flash[:notice] = "Make sure you add at least a description or photo."
     end
     redirect_to collection
   end

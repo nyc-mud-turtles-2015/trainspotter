@@ -49,4 +49,10 @@ class Collection < ActiveRecord::Base
       return title
     end
   end
+
+  def have_title
+
+  end
+
+
 end
