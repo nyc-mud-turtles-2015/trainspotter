@@ -1,5 +1,4 @@
 class AddPendingColumnToObservations < ActiveRecord::Migration
-  def change
     def up
       add_column :observations, :pending, :boolean, default: true
     end
@@ -7,5 +6,4 @@ class AddPendingColumnToObservations < ActiveRecord::Migration
     def down
       remove_column :observations, :pending
     end
-  end
 end
