@@ -32,7 +32,9 @@
 
   def update
     collection = Collection.find(params[:collection_id])
-    Observation.find(params[:id]).destroy
+    observation = Observation.find(params[:id])
+    observation.pending = false
+    observation.save
     redirect_to collection_path(collection)
   end
 
