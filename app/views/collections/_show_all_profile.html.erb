@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<% collections.each do |c| %>
+<% collections.each_with_index do |c, i| %>
   <% if c.visible_to_user?(current_user) %>
     <div class="large-4 small-6 columns">
       <% if c.observations.last && c.observations.last.image_file_name.present?%>
@@ -12,17 +12,25 @@
       <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
       <% end %>
           <div class="category-info">
-          <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.public_name%></h6>
-          <div class="subheader">
-            <% if belongs_to_current_user?(c) %>
-              <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Permissions</button><br>
-              <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
-                <li><%= link_to 'Edit Permissions', collection_permissions_path(c), method: "get"%></li>
-                <li><%= link_to "Delete", collection_path(c), :method => :delete %></li>
-              </ul>
-            <% end %>
-          </div>
+            <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
+              <div class="subheader">
+                <% if belongs_to_current_user?(c) %>
+                 <ul class="accordion" data-accordion>
+                  <li class="accordion-navigation">
+                    <a href="#panel1a-<%= i %>">Permissions</a>
+                    <div id="panel1a-<%= i %>" class="content">
+                      <%= link_to 'edit', collection_permissions_path(c), method: "get"%>
+                    </div>
+                  </li>
+                  <li class="accordion-navigation">
+                    <a href="#panel2a-<%= i %>">Delete</a>
+                    <div id="panel2a-<%= i %>" class="content">
+                       <%= link_to "Confirm", collection_path(c), :method => :delete %>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>
