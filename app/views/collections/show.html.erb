@@ -13,7 +13,7 @@
       <% if @collection.has_pending_observations? %>
         <h5 class="center-text">You have pending sightings to approve for this collection.</h5>
         <% @collection.pending_observations.each do |o|%>
-          <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection, o) %></li>
+          <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
           <li class= "center-text"><span><em><%= o.description %></span></em><li>
           <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
           <li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), :method => :put, class: "radius small button info" %><li>
@@ -24,11 +24,14 @@
     <% if @collection.visible_to_user?(current_user) %>
       <% if @collection.has_approved_observations? %>
         <% @collection.approved_observations.each do |o|%>
-          <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
-          <li class= "center-text"><span><em><%= o.description %></span></em><li>
-          <li class= "center-text"><span>Added by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
-          <% if belongs_to_current_user?(o) || belongs_to_current_user?(@collection) %>
-            <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+        <% if o.image_file_name.nil?%>
+            <li class= "only-text"><span><h5><em><%= link_to o.description, collection_observation_path(@collection,o) %></span></em></li>
+            <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span></h5></li>
+        <% else %>
+            <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection,o) %></li>
+            <li class= "center-text"><span><em><%= o.description %></span></em><li>
+            <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+            <div class = "div-header"></div>
           <% end %>
         <%end%>
       <%end%>
@@ -42,6 +45,14 @@
           <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
           <li class= "center-text"><span><em><%= o.description %></span></em><li>
           <li class= "center-text"><span>Added by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
+           <% if o.image_file_name.nil?%>
+              <li class= "only-text"><span><em><%= o.description %></span></em><li>
+              <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span></li>
+            <% else %>
+              <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection,o) %></li>
+              <li class= "center-text"><span><em><%= o.description %></span></em><li>
+              <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+            <%end%>
         <%end%>
       <%end%>
     <% else %>
@@ -49,6 +60,7 @@
     <%end%>
   <% end %>
 </div>
+
 
 
 

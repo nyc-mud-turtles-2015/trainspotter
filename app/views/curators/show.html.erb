@@ -12,6 +12,7 @@
         <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
       <% end %><% else %><h5 class = "center-text">give yourself a username:</h5>
 
+
     <%= form_for @curator do |f|%>
       <div class="row">
       <div class="3 columns">
@@ -23,7 +24,8 @@
     <% end %>
   <% end %>
 <% end %>
-<%= render partial: 'collections/show_all', locals: { collections: @collections, profile: true } %>
+
+<%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
 
 </div>
 

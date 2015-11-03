@@ -11,10 +11,14 @@
       <% else %>
       <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
       <% end %>
-    <div class="category-info">
-    <h5><%= link_to c.title, collection_path(c)%></h5>
-    <h6 class="subheader"><%=c.curator.public_name%></h6>
-    </div>
+          <div class="category-info">
+          <h5><%= link_to c.title, collection_path(c)%></h5>
+          <h6 class="subheader"><%=c.curator.name%></h6>
+          <div class="subheader"> <% if belongs_to_current_user?(c) %>
+          <li><%= button_to "Delete", collection_path(c), :method => :delete, class: "radius alert small button"%></li>
+        <% end %></div>
+        </div>
+      </div>
     </div>
   <%end%>
 <%end%>
@@ -27,14 +31,13 @@
             <% else %>
           <div class = "image-thumb"><%= link_to (image_tag 'blank.png'), collection_path(c) %></div>
       <% end %>
-    <div class="category-info">
-    <h5><%= link_to c.title, collection_path(c)%></h5>
-    <h6 class="subheader"><%=c.curator.public_name%></h6>
-    </div>
-    </div>
-    </div>
-    <%end%>
-    <%end%>
+          <div class="category-info">
+          <h5><%= link_to c.title, collection_path(c)%></h5>
+          <h6 class="subheader"><%=c.curator.name%></h6>
+        </div>
+        </div>
+        </div>
+      <%end%>
     <%end%>
   <%end%>
 
