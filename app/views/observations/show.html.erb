@@ -1,10 +1,15 @@
 <div class = "div-header"></div>
   <div class = "observe-show">
-     <%= image_tag @observation.image.url %>
-    <div class="category-info">
-      <h5><%= @observation.description %></h5>
-      <h6 class="subheader">Spotted at <%=@observation.created_at.strftime("%a, %d %b %Y %H:%M:%S")%> by <%= @observation.curator.name %></h6>
 
+   <% if @observation.image_file_name.nil?%>
+      <h4 class= "only-text"><span><em><%= @observation.description %></span></em></h4>
+      <div class= "center-text"><span>Added by <%= link_to @observation.curator.name, curator_path(@observation.curator) %></span></div>
+   <% else %>
+      <div class= "center-pic"><%= image_tag @observation.image.url %></div>
+      <h5 class= "center-text"><span><em><%= @observation.description %></span></em></h5>
+    <%end%>
+       <h6 class="subheader">Spotted at <%=@observation.created_at.strftime("%a, %d %b %Y %H:%M:%S")%> by <%= @observation.curator.name %></h6>
+  <div class = "div-header"></div>
     <% if logged_in? %>
       <% if @observation.collection.owned_by?(current_user) %>
         <% if belongs_to_current_user?(@observation) || belongs_to_current_user?(@observation.collection) %>

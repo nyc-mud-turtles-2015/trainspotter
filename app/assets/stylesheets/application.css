@@ -49,6 +49,10 @@ h2,h3,h4,h5,h6{
   text-align: center;
 }
 
+.only-text a{
+  color:black;
+}
+
 .visible-img img {
     width:auto;
     margin: auto !important;  /* !important to overwrite negative margin-left and margin-top foundation js gives for images in clearing*/
