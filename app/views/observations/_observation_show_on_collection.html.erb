@@ -1,9 +1,9 @@
 <% if o.image_file_name.nil?%>
   <li class= "only-text"><span><h5><em><%= link_to o.description, collection_observation_path(@collection,o) %></span></em></li>
-  <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span></h5></li>
+  <li class= "center-text"><span>Added by <%= link_to o.curator.public_name, curator_path(o.curator) %></span></h5></li>
 <% else %>
   <li class= "center-pic"><%= link_to (image_tag o.image.url(:medium)), collection_observation_path(@collection,o) %></li>
   <li class= "center-text"><span><em><%= o.description %></span></em><li>
-  <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
+  <li class= "center-text"><span>Added by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
   <div class = "div-header"></div>
 <% end %>

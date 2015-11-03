@@ -13,7 +13,7 @@
       <% end %>
           <div class="category-info">
           <h5><%= link_to c.title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.name%></h6>
+          <h6 class="subheader"><%=c.curator.public_name%></h6>
           <div class="subheader">
             <% if belongs_to_current_user?(c) %>
               <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Permissions</button><br>
@@ -43,7 +43,7 @@
       <% end %>
           <div class="category-info">
           <h5><%= link_to c.title, collection_path(c)%></h5>
-          <h6 class="subheader"><%=c.curator.name%></h6>
+          <h6 class="subheader"><%=c.curator.public_name%></h6>
         </div>
         </div>
         </div>
