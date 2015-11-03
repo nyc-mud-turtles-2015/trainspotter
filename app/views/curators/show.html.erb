@@ -1,35 +1,23 @@
 <div class = "body">
 
-<h2 class = "center-text"><%= @curator.public_name %></h2>
-<% if logged_in? %>
-  <% if @curator.is_user?(current_user) %>
-    <% if @curator.username %><h3 class = "center-text">username: <%= @curator.username %></h3><%= form_for @curator do |f|%>
-      <div class="row">
-      <div class="3 columns">
-        <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
-      </div>
-      </div>
-        <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
+  <h2 class = "center-text"><%= @curator.public_name %></h2>
+  <% if logged_in? %>
+    <% if @curator.is_user?(current_user) %>
+      <% if @curator.username %>
+        <h3 class = "center-text">username: <%= @curator.username %>
+        </h3>
+        <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
+      <% else %>
+        <h5 class = "center-text">give yourself a username:
+        </h5>
+        <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
       <% end %>
-    <% else %>
-      <h5 class = "center-text">give yourself a username:</h5>
-      <%= form_for @curator do |f|%>
-      <div class="row">
-      <div class="3 columns">
-        <%= f.text_field :username, placeholder: 'e.g. SpotterMcGee' %>
-      </div>
-      </div>
-        <div class = "center-text"><%= f.submit "update username", class: "radius success small button" %></div>
+      <% if @curator.has_pending_sightings? %>
+        <%= render partial: 'pending_sightings', locals: { curator: @curator } %>
       <% end %>
-    <% end %>
-    <% if @curator.has_pending_sightings? %>
-    <%= render partial: 'pending_sightings', locals: { curator: @curator } %>
     <% end %>
   <% end %>
-<% end %>
-
-<%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
-
+  <%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
 </div>
 
 
