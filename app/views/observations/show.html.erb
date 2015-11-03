@@ -11,12 +11,10 @@
        <h6 class="subheader">Spotted at <%=@observation.created_at.strftime("%a, %d %b %Y %H:%M:%S")%> by <%= @observation.curator.name %></h6>
   <div class = "div-header"></div>
     <% if logged_in? %>
-      <% if @observation.collection.owned_by?(current_user) %>
         <% if belongs_to_current_user?(@observation) || belongs_to_current_user?(@observation.collection) %>
           <div class= "center-text"><%= button_to "Delete", collection_observation_path(@observation.collection_id,@observation ), :method => :delete, class: "radius small button alert" %></div>
         <%end%>
       <%end%>
-    <%end%>
     </div>
   </div>
 </div>
