@@ -56,7 +56,7 @@ class CollectionsController < ApplicationController
   private
 
   def valid_params
-    params.require(:collection).permit(:title,:curator_id, :private, :description)
+    params.require(:collection).permit(:title, :private, :description).merge({curator_id: current_user.id})
   end
 
 end

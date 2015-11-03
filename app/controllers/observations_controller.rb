@@ -48,7 +48,7 @@
   private
 
   def observation_params
-    params.require(:observation).permit(:description,:curator_id,:image, :collection_id)
+    params.require(:observation).permit(:description,:image, :collection_id).merge({curator_id: current_user.id})
   end
 
   def pending_param
