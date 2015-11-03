@@ -30,7 +30,7 @@ class Collection < ActiveRecord::Base
   end
 
   def has_pending_observations?
-    self.pending_observations.empty?
+    self.pending_observations.any?
   end
 
   def has_approved_observations?
