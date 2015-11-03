@@ -1,5 +1,4 @@
 class RemovePendingObservationsTable < ActiveRecord::Migration
-  def change
     def up
       drop_table :pending_observations
     end
@@ -11,5 +10,4 @@ class RemovePendingObservationsTable < ActiveRecord::Migration
         t.timestamps null: false
       end
     end
-  end
 end
