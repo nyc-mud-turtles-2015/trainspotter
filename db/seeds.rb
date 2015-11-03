@@ -17,11 +17,11 @@ maggie_collection = Collection.create(title: "Afros", description: "Great Scott!
 
 phil_collection = Collection.create(title: "Pizzas", description: "Great Scott!", curator_id: jason.id)
 
-jason_observation = Observation.create(description: "Games!", curator_id: jason.id, collection_id: jason_collection.id)
+jason_observation = Observation.create(description: "Games!", curator_id: jason.id, collection_id: jason_collection.id, pending: false)
 
-maggie_observation = Observation.create(description: "Afros!", curator_id: maggie.id, collection_id: maggie_collection.id)
+maggie_observation = Observation.create(description: "Afros!", curator_id: maggie.id, collection_id: maggie_collection.id, pending: false)
 
-phil_observation = Observation.create(description: "Pizza!", curator_id: phil.id, collection_id: phil_collection.id)
+phil_observation = Observation.create(description: "Pizza!", curator_id: phil.id, collection_id: phil_collection.id, pending: false)
 
 jason_observation.image = File.open(File.expand_path("../fixtures/photos/game.jpg", __FILE__))
 jason_observation.save
