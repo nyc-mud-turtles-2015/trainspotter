@@ -44,24 +44,17 @@ ActiveRecord::Schema.define(version: 20151103142350) do
     t.integer  "curator_id"
     t.integer  "collection_id"
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "pending",            default: true
   end
 
   add_index "observations", ["collection_id"], name: "index_observations_on_collection_id", using: :btree
   add_index "observations", ["curator_id"], name: "index_observations_on_curator_id", using: :btree
-
-  create_table "pending_observations", force: :cascade do |t|
-    t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "pending_observations", ["observation_id"], name: "index_pending_observations_on_observation_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.integer  "curator_id"
@@ -80,7 +73,6 @@ ActiveRecord::Schema.define(version: 20151103142350) do
   add_foreign_key "collections", "curators"
   add_foreign_key "observations", "collections"
   add_foreign_key "observations", "curators"
-  add_foreign_key "pending_observations", "observations"
   add_foreign_key "roles", "collections"
   add_foreign_key "roles", "curators"
 end
