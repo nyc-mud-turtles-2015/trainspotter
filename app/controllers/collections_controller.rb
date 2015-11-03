@@ -27,7 +27,8 @@ class CollectionsController < ApplicationController
   end
 
   def search
-    @collections = Collection.search_collection(params[:c])
+    @search_term = params[:c]
+    @collections = Collection.search_collection(@search_term)
   end
 
   def permissions
