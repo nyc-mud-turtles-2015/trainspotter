@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
-
+gem 'will_paginate', '~> 3.0.6'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk-v1'
 gem 'rails_12factor'
