@@ -5,16 +5,16 @@
   <h3 class = "center-text">Visibility:
     <% if @collection.is_private %>
     Private (only visible to you)
-      <%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
-      <%= f.hidden_field :is_private, value: false %>
-      <p class = "secure-text"><%= f.submit "make public", class: "radius small button"%></p>
-    <% end %>
+
+     <p class = "secure-text"><%= button_to "Make Public", collection_path(@collection), method: "put", params: {:"collection[is_private]" => false}, class: "radius small button" %></p>
+
     <% else %>
-      Public (visible to everyone)<%= form_for(@collection, url: "/collections/#{@collection.id}", method: 'put') do |f|%>
-      <%= f.hidden_field :is_private, value: true %>
-      <p class = "secure-text"><%= f.submit "make private", class: "radius small button"%></p>
+      Public (visible to everyone)
+
+      <p class = "secure-text"><%= button_to "Make Private", collection_path(@collection), method: "put", params: {:"collection[is_private]" => true}, class: "radius small button" %></p>
+
     <% end %>
-    <% end %>
+
   </h3>
 <% else %>
   <h1>You need to <%= link_to 'log in', login_path %> to see this page, buddy!</h1>
