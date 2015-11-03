@@ -1,0 +1,3 @@
+<h2 class = "center-text"><%= @collection.title  %></h2>
+<div class = "center-text">Share these spottings:<%= social_share_button_tag("Check out what I spotted: #{@collection.title}") %></div>
+<div class= "center-text"><%= button_to "Add a Sighting", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
