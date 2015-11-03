@@ -42,11 +42,9 @@
     <% if @collection.public? %>
       <% if @collection.approved_observations.first %>
         <% @collection.approved_observations.each do |o|%>
-<<<<<<< HEAD
           <li class= "center-pic"><%= image_tag o.image.url(:medium)  %></li>
           <li class= "center-text"><span><em><%= o.description %></span></em><li>
           <li class= "center-text"><span>Added by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
-=======
            <% if o.image_file_name.nil?%>
               <li class= "only-text"><span><em><%= o.description %></span></em><li>
               <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span></li>
@@ -55,7 +53,6 @@
               <li class= "center-text"><span><em><%= o.description %></span></em><li>
               <li class= "center-text"><span>Added by <%= link_to o.curator.name, curator_path(o.curator) %></span><li>
             <%end%>
->>>>>>> fix the blank images popping up for collections show, collections index. Add new font for only text observations.
         <%end%>
       <%end%>
     <% else %>
