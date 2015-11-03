@@ -48,7 +48,7 @@ class Curator < ActiveRecord::Base
   end
 
   def has_pending_sightings?
-    self.collection_observations.where(pending: true).order(updated_at: :desc).any?
+    self.collection_observations.where(pending: true).any?
   end
 
   def collections_pending
