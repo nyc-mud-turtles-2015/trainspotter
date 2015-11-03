@@ -13,7 +13,7 @@
    <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %></div>
   </div>
       <%= f.hidden_field :collection_id, value: @collection.id%>
-      <% if current_user_can_add?(@collection) %>
+      <% if @collection.current_user_can_add?(current_user) %>
         <%= f.hidden_field :pending, value: false %>
         <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
       <% else %>

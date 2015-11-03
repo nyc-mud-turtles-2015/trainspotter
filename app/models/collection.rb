@@ -29,6 +29,18 @@ class Collection < ActiveRecord::Base
     self.observations.order(updated_at: :desc).select { |obs| obs.is_pending? }
   end
 
+  def has_pending_observations?
+    self.pending_observations.empty?
+  end
+
+  def has_approved_observations?
+    !self.approved_observations.empty?
+  end
+
+  def current_user_can_add?(user)
+    user.can_create?(self) || self.owned_by?(user) || user.admin?(self)
+  end
+
   def public?
     !self.private
   end
