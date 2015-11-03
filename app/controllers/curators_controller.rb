@@ -16,8 +16,7 @@ class CuratorsController < ApplicationController
 
   def update
     @curator = Curator.find(current_user.id)
-    @curator.assign_attributes(valid_params)
-    if @curator.save
+    if @curator.update_attributes(valid_params)
     else
       flash[:errors] = "Curator cannot be saved!"
       redirect_to root_path
