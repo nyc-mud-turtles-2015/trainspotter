@@ -1,0 +1,8 @@
+<h5 class="center-text">You have pending sightings to approve for this collection.</h5>
+<% @collection.pending_observations.each do |o|%>
+  <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
+  <li class= "center-text"><span><em><%= o.description %></span></em><li>
+  <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
+  <li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), :method => :put, class: "radius small button info" %><li>
+  <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+<% end %>
