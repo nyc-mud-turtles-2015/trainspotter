@@ -17,7 +17,7 @@
         <p>Created on <%= @collection.created_at.strftime("%b %d, %Y")%></p>
         <p>Last updated on <%= @collection.updated_at.strftime("%b %d, %Y")%></p>
         <p><%= stat_view_helper(@collection.observations.count, "sighting") %> by
-        <%= stat_view_helper(@collection.curators.count, "curator") %>
+        <%= stat_view_helper(@collection.curators.uniq.count, "curator") %>
           </p>
 
       </div>
