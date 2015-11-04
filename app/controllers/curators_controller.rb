@@ -1,5 +1,7 @@
 class CuratorsController < ApplicationController
 
+  before_action :redirect_if_not_logged_in, only: [:update]
+
   def show
     @curator = Curator.find(params[:id])
     @collections = @curator.collections.order(updated_at: :desc)

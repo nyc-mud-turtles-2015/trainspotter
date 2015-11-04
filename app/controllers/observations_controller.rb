@@ -1,5 +1,7 @@
   class ObservationsController < ApplicationController
 
+  before_action :redirect_if_not_logged_in, only: [:new, :create, :update, :destroy]
+
   def index
     @observations = Observation.order(updated_at: :desc)
   end
