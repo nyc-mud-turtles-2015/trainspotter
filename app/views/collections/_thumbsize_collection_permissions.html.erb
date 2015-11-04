@@ -1,21 +1,3 @@
 <div class="category-info">
   <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
-  <div class="subheader">
-    <% if belongs_to_current_user?(c) %>
-      <ul class="accordion" data-accordion>
-        <li class="accordion-navigation">
-          <a href="#panel1a-<%= i %>">Permissions</a>
-          <div id="panel1a-<%= i %>" class="content">
-            <%= link_to 'Edit', collection_permissions_path(c), method: "get"%>
-          </div>
-        </li>
-        <li class="accordion-navigation">
-          <a href="#panel2a-<%= i %>">Delete</a>
-          <div id="panel2a-<%= i %>" class="content">
-            <%= link_to "Confirm", collection_path(c), :method => :delete %>
-          </div>
-        </li>
-      </ul>
-    <% end %>
-  </div>
 </div>

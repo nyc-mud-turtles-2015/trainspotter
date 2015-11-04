@@ -1,19 +1,6 @@
-<% if logged_in? %>
-  <% collections.each_with_index do |c, i| %>
-    <% if c.visible_to_user?(current_user) %>
-      <div class="large-4 small-6 columns">
-        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
-        <%= render partial: 'collections/thumbsize_collection_permissions', locals: { c: c, i: i } %>
-      </div>
-    <%end%>
-  <%end%>
-<% else %>
-  <% collections.each do |c| %>
-    <% if c.public? %>
-      <div class="large-4 small-6 columns">
-        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
-        <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
-      </div>
-    <%end%>
-  <%end%>
+<% collections.each do |c| %>
+  <div class="large-4 small-6 columns">
+    <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+    <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
+  </div>
 <%end%>
