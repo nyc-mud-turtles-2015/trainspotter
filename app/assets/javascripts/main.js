@@ -12,6 +12,7 @@ function deleteHttpRequest(url) {
     })
     .fail(function(response){
     });
+
 }
 
 $( document ).ready(function() {
