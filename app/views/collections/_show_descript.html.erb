@@ -1,8 +1,16 @@
   <div class = "collection-description">
-    <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">Summary</a>
+    <a data-dropdown="drop3" aria-controls="drop2" aria-expanded="false">Description</a>
+      <div id="drop3" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+        <p>"<%= @collection.description%>"</p>
+      </div>
+    </div>
+  <div class = "collection-description">
+    <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">Details</a>
       <div id="drop2" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
-        <p><%= @collection.description %></p>
-        <p><%= @collection.observations.count %> sightings</p>
-        <p>Created at <%= @collection.created_at.strftime("%b %d, %Y")%></p>
+        <p>Created on <%= @collection.created_at.strftime("%b %d, %Y")%></p>
+        <p>Last updated on <%= @collection.updated_at.strftime("%b %d, %Y")%></p>
+        <p><%= stat_view_helper(@collection.observations.count, "sighting") %> by
+        <%= stat_view_helper(@collection.curators.count, "curator") %>
+          </p>
       </div>
   </div>

@@ -16,4 +16,13 @@ module ViewHelper
   def collection_thumb_image(coll)
     coll.approved_observations.first.image.url(:thumb)
   end
+
+  def stat_view_helper(number, singular_noun)
+    if number == 1
+     return number.to_s + " " + singular_noun
+    else
+     return number.to_s + " " + singular_noun + "s"
+    end
+  end
+
 end

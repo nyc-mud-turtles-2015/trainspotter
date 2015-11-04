@@ -11,7 +11,7 @@ class Collection < ActiveRecord::Base
   belongs_to :curator
 
   has_many :observations
-
+  has_many :curators, :through => :observations, :source => :curator
   has_many :roles
   has_many :authorized_users, :through => :roles, :source => :curator
 
@@ -50,5 +50,33 @@ class Collection < ActiveRecord::Base
     end
   end
 
+  # def updated_at_parser
+  #   date = self.updated_at
+  #   seconds = ((DateTime.now - date) / 1000).round
+  #   interval = (seconds / 31536000).round
+  #   if (interval > 1)
+  #     return interval + " years"
+  #   end
+  #   interval = (seconds / 2592000).round
+  #   if (interval > 1)
+  #     return interval + " months"
+  #   end
+  #   interval = (seconds / 86400).round
+  #   if (interval > 1)
+  #     return interval + " days"
+  #   end
+  #   interval = (seconds / 3600).round
+  #   if (interval > 0)
+  #     if (interval == 1)
+  #       return interval + " hour"
+  #     end
+  #     return interval + " hours"
+  #   end
+  #   interval = (seconds / 60).round
+  #   if (interval > 1)
+  #     return interval + " minutes"
+  #   end
+  #   return "just now"
+  # end
 
 end
