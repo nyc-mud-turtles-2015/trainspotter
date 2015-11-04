@@ -57,13 +57,18 @@ class CollectionsController < ApplicationController
 
   def update
     @collection = Collection.find(params[:id])
-    @collection.update_attributes(valid_params)
-    if @collection.save
+    if @collection.owned_by?(current_user)
+      if @collection.update_attributes(valid_params)
+       redirect_to collection_permissions_path(@collection)
+       flash[:notice] = "Update successful!"
+      else
+        flash[:errors] = "Collection update failed. Please try again. Note: only owner of collection can update it."
+        redirect_to collection_permissions_path(@collection)
+      end
     else
-      flash[:errors] = "Collection cannot be saved!"
-      redirect_to root_path
+      flash[:error] = "You are not authorized to edit this collection"
+      redirect_to collection_path(@collection)
     end
-    redirect_to collection_permissions_path(@collection)
   end
 
   def index
