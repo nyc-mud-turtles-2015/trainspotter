@@ -14,9 +14,9 @@
     <% if logged_in? %>
       <% if belongs_to_current_user?(@observation) || belongs_to_current_user?(@observation.collection) %>
         <div class = "center-text">
-          <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Edit</button><br>
+          <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Options</button><br>
           <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
-            <li><%= link_to 'Rename', edit_collection_observation_path(@observation.collection_id, @observation), :method => :get %></li>
+            <li><%= link_to 'Edit', edit_collection_observation_path(@observation.collection_id, @observation), :method => :get %></li>
             <li><%= link_to 'Delete', collection_observation_path(@observation.collection_id, @observation), :method => :delete%></li>
           </ul>
         </div>
