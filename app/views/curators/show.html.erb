@@ -1,7 +1,10 @@
 <%= flash[:errors] %>
-<div class = "body">
 
-  <h2 class = "center-text"><%= @curator.public_name %></h2>
+<%= render partial: 'curators/show_stat', locals: {curator: @curator} %>
+
+
+<div class = "div-header"></div>
+
   <% if logged_in? %>
     <% if @curator.is_user?(current_user) %>
       <% if @curator.username %>
@@ -19,7 +22,7 @@
     <% end %>
   <% end %>
   <%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
-</div>
+
 
 
 
