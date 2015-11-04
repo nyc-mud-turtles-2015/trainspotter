@@ -18,7 +18,7 @@
         </div>
         <%= f.hidden_field :collection_id, value: @collection.id%>
           <% if @collection.user_can_add?(current_user) %>
-            <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success large button" %></div>
+            <div class = "center-text"><%= f.submit "Add Sighting", class: "radius success medium button" %></div>
           <% else %>
             <div class = "center-text" id="pitch_to_collection"><%= f.submit "Pitch to #{@collection.curator.public_name}", class: "radius success medium button" %></div>
           <%end%>
