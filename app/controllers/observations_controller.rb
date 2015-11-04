@@ -30,6 +30,10 @@
     @observation = Observation.find(params[:id])
   end
 
+  def edit
+    @observation = Observation.find(params[:id])
+  end
+
   def update
     collection = Collection.find(params[:collection_id])
     observation = Observation.find(params[:id])
