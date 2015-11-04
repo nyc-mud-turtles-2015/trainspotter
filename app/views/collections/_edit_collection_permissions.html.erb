@@ -2,5 +2,6 @@
   <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Permissions</button><br>
     <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
       <li><%= link_to 'Edit Permissions', collection_permissions_path(@collection), method: "get"%></li>
+      <li> <%= link_to "Delete Collection", collection_path(@collection), :method => :delete %></li>
     </ul>
 </div>
