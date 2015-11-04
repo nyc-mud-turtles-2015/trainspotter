@@ -25,23 +25,23 @@ class Curator < ActiveRecord::Base
   validates :username, uniqueness: true
 
   def can_add?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, can_add: true)
+    Role.exists?(curator_id: self.id, collection_id: coll.id, can_add: true)
   end
 
   def can_read?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, can_read: true)
+    Role.exists?(curator_id: self.id, collection_id: coll.id, can_read: true)
   end
 
   def can_update?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, can_update: true)
+    Role.exists?(curator_id: self.id, collection_id: coll.id, can_update: true)
   end
 
   def can_invite?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, can_invite: true)
+    Role.exists?(curator_id: self.id, collection_id: coll.id, can_invite: true)
   end
 
   def admin?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, admin: true)
+    Role.exists?(curator_id: self.id, collection_id: coll.id, admin: true)
   end
 
   def is_user?(user)
