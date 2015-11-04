@@ -1,5 +1,7 @@
 class CollectionsController < ApplicationController
 
+  before_action :redirect_if_not_logged_in, only: [:new, :create, :permissions, :destroy, :edit, :update]
+
   def welcome
     @collections = Collection.order(updated_at: :desc)
   end
