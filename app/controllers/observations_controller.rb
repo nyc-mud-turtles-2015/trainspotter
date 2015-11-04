@@ -44,6 +44,7 @@
       observation.pending = false
       observation.update_attributes(observation_params)
       observation.save
+      byebug
     else
       flash[:error] = "You are not authorized to update sightings on this collection"
     end
