@@ -1,0 +1,21 @@
+<%= flash[:errors] %>
+<div class="form" id="pitch_observation">
+  <% if logged_in? %>
+    <h2 class = "center-text">Edit Sighting</h2>
+    <%= form_for @observation, url: "/collections/#{@collection.id}/observations/#{@observation.id}" do |f|%>
+    <input name="_method" type="hidden" value="patch" />
+      <div class="3 columns">
+        <div class ="center-text">
+          <div><%= f.text_area :description, placeholder: 'Description', rows: '5' %>
+          </div>
+        </div>
+        <%= f.hidden_field :collection_id, value: @collection.id%>
+        <% if @collection.user_can_add?(current_user) %>
+          <div class = "center-text"><%= f.submit "Update Sighting", class: "radius success medium button" %></div>
+        <%end%>
+    <% end %>
+  <% else %>
+    <h2><%= link_to 'Log in', login_path %> to add a sighting.</h2>
+  <% end %>
+</div>
+
