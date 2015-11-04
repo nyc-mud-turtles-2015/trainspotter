@@ -44,11 +44,21 @@ class CollectionsController < ApplicationController
       collection.observations.delete_all
       collection.roles.delete_all
       collection.destroy
-      redirect_to collections_path
+      if request.xhr?
+        render 'collections/index'
+      else
+        redirect_to collections_path
+      end
     else
       flash[:error] = "You are not authorized to delete this collection"
-      redirect_to collection_path(collection)
+      if request.xhr?
+        render 'collections/show'
+      else
+        redirect_to collection_path
+      end
     end
+
+
   end
 
   def edit
