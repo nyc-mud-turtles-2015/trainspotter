@@ -24,8 +24,8 @@ class Curator < ActiveRecord::Base
   validates :name, presence: true
   validates :username, uniqueness: true
 
-  def can_create?(coll)
-    Role.find_by(curator_id: self.id, collection_id: coll.id, can_create: true)
+  def can_add?(coll)
+    Role.find_by(curator_id: self.id, collection_id: coll.id, can_add: true)
   end
 
   def can_read?(coll)

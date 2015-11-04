@@ -30,7 +30,7 @@ class Collection < ActiveRecord::Base
   end
 
   def user_can_add?(user)
-    user.can_create?(self) || self.owned_by?(user) || user.admin?(self)
+    user.can_add?(self) || self.owned_by?(user) || user.admin?(self)
   end
 
   def public?

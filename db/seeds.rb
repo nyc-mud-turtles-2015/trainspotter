@@ -32,11 +32,11 @@ phil_observation.save
 maggie_observation.image = File.open(File.expand_path("../fixtures/photos/afro.jpg", __FILE__))
 maggie_observation.save
 
-Role.create(curator_id: phil.id, collection_id: jason_collection.id, can_create: true)
+Role.create(curator_id: phil.id, collection_id: jason_collection.id, can_add: true)
 
-Role.create(curator_id: maggie.id, collection_id: jason_collection.id, can_read: true)
+Role.create(curator_id: maggie.id, collection_id: jason_collection.id, can_add: true)
 
-Role.create(curator_id: james.id, collection_id: jason_collection.id, can_update: true)
+Role.create(curator_id: james.id, collection_id: jason_collection.id, can_add: true)
 
 Role.create(curator_id: bobo.id, collection_id: jason_collection.id, can_invite: true)
 
