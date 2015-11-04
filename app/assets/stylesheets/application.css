@@ -157,3 +157,8 @@ footer{
 .paginate{
   text-align: center;
 }
+
+.stats-text{
+  text-align: center;
+  font-family: 'Roboto Mono';
+}
