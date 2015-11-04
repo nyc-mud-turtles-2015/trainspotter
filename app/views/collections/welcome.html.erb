@@ -6,17 +6,18 @@
     <strong class="show-for-small-only">
       <%= form_tag(search_collections_path, method: "get", enforce_utf8: false) do %>
         <%= text_field_tag(:c, "", placeholder: "Search Collections") %>
-        <%= button_tag "Go!", name: nil, class: "radius small button", type: "submit" %>
+        <%= button_tag "Search!", name: nil, class: "secondary tiny button", type: "submit" %>
       <% end %>
     </strong>
   </div>
 </div>
 <% if logged_in? %>
-  <div class= "center-text"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "radius small button"%></div>
+  <div class= "welcome-search"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "small button"%></div>
 <% else %>
-  <div class= "center-text"><%= button_to "Sign up to become a curator", login_path, method: "get", class: "radius small button"%>
+  <div class= "center-text"><%= button_to "Sign up to become a curator", login_path, method: "get", class: "small button"%>
   </div>
 <% end %>
+
 <div class= "center-text">
   <ul class="accordion" data-accordion>
     <li class="accordion-navigation">
