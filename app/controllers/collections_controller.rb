@@ -15,11 +15,11 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(valid_params)
     if @collection.save
+      redirect_to new_collection_observation_path(@collection)
     else
-      flash[:errors] = "Collection cannot be saved!"
+      flash[:error] = "Collection cannot be saved!"
       redirect_to new_collection_path
     end
-    redirect_to new_collection_observation_path(@collection)
   end
 
   def show

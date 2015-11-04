@@ -50,9 +50,5 @@ class Collection < ActiveRecord::Base
     end
   end
 
-  def have_title
-
-  end
-
 
 end
