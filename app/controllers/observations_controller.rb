@@ -40,15 +40,23 @@
   def update
     collection = Collection.find(params[:collection_id])
     observation = Observation.find(params[:id])
-    observation.pending = false
-    observation.update_attributes(observation_params)
-    observation.save
+    if collection.owned_by?(current_user)
+      observation.pending = false
+      observation.update_attributes(observation_params)
+      observation.save
+    else
+      flash[:error] = "You are not authorized to update sightings on this collection"
+    end
     redirect_to collection_path(collection)
   end
 
   def destroy
     collection = Collection.find(params[:collection_id ])
-    Observation.find(params[:id]).destroy
+    if collection.owned_by?(current_user)
+      Observation.find(params[:id]).destroy
+    else
+      flash[:error] = "You are not authorized to delete sightings on this collection"
+    end
     redirect_to collection_path(collection)
   end
 
