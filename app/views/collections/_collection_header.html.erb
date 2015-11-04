@@ -1,7 +1,9 @@
 <h2 class = "center-text"><%= @collection.title  %></h2>
 <h5 class= "center-text"><span>Owned by <%= link_to @collection.curator.public_name, curator_path(@collection.curator) %></span></h5>
-
+<strong class="show-for-small-only">
 <%= render partial: 'collections/show_descript', locals: { collection: @collection } %>
+</strong>
+<strong class="show-for-medium-up"><h6 class= "center-text"><%= @collection.description %></h5></strong>
 
 <div class = "div-header"></div>
 
