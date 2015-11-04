@@ -11,8 +11,18 @@ class Observation < ActiveRecord::Base
 
   validates :curator, :collection, presence: true
 
+  validate :at_least_one
+
   def approved?
     !self.pending
+  end
+
+private
+
+  def at_least_one
+    if [self.description, self.image].reject(&:blank?).size == 0
+       errors.add(:base, "Make sure you add at least a description or photo")
+    end
   end
 
 end
