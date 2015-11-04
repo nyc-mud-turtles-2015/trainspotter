@@ -40,12 +40,14 @@ class CollectionsController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     collection = Collection.find(params[:id])
+    @curator = current_user
+    @collections = @curator.collections.order(updated_at: :desc)
     if collection.owned_by?(current_user)
       collection.observations.delete_all
       collection.roles.delete_all
       collection.destroy
       if request.xhr?
-        render 'collections/index'
+        render 'curators/show'
       else
         redirect_to collections_path
       end
