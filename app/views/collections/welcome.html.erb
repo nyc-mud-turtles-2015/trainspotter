@@ -14,7 +14,7 @@
 <% if logged_in? %>
   <div class= "center-text"><%= button_to "Add a new collection", new_collection_path, method: "get", class: "radius small button"%></div>
 <% else %>
-  <div class= "center-text"><%= button_to "Become a curator!", login_path, method: "get", class: "radius small button"%>
+  <div class= "center-text"><%= button_to "Sign up to become a curator", login_path, method: "get", class: "radius small button"%>
   </div>
 <% end %>
 <div class= "center-text">
@@ -34,7 +34,7 @@
     <li class="accordion-navigation">
       <a href="#panel3a">Technologies</a>
       <div id="panel3a" class="content">
-        We used Ruby on Rails and Javascript as our primary languages. On the front end, we also used Foundation.
+        We made Trainspotter with Ruby on Rails and Javascript. On the front end, we also used Foundation.
       </div>
     </li>
   </ul>
