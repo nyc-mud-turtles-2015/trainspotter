@@ -1,12 +1,12 @@
 <%= flash[:errors] %>
 <%= flash[:notice] %>
 <div class = "content">
-  <%= render partial: 'collection_header', locals: { collection: @collection } %>
+  <%= render partial: 'collections/collection_header', locals: { collection: @collection } %>
   <% if logged_in? %>
     <% if @collection.owned_by?(current_user) %>
-      <%= render partial: 'edit_collection_permissions', locals: { collection: @collection } %>
+      <%= render partial: 'collections/edit_collection_permissions', locals: { collection: @collection } %>
       <% if @collection.pending_observations.any? %>
-        <%= render partial: 'pending_observations', locals: { collection: @collection } %>
+        <%= render partial: 'collections/pending_observations', locals: { collection: @collection } %>
       <% end %>
     <% end %>
     <% if @collection.visible_to_user?(current_user) %>
