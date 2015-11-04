@@ -38,9 +38,13 @@ class CollectionsController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     collection = Collection.find(params[:id])
-    collection.observations.delete_all
-    collection.roles.delete_all
-    collection.destroy
+    if collection.owned_by?(current_user)
+      collection.observations.delete_all
+      collection.roles.delete_all
+      collection.destroy
+    else
+      flash[:errors] = "You do not have permission to delete this collection!"
+    end
     redirect_to session.delete(:return_to)
   end
 
