@@ -51,6 +51,7 @@
   end
 
   def destroy
+    p params
     collection = Collection.find(params[:collection_id ])
     if collection.owned_by?(current_user)
       Observation.find(params[:id]).destroy
