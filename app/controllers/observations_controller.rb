@@ -58,7 +58,7 @@
       flash[:error] = "You are not authorized to delete sightings on this collection"
     end
     if request.xhr?
-      render 'collection/show', id: collection.id, layout: false
+      render 'collections/show'
     else
       redirect_to collection_path(collection)
     end
