@@ -43,8 +43,8 @@ class Collection < ActiveRecord::Base
 
   def shortened_title
     title = self.title
-    if title.length > 22
-      return title[0..21] + "..."
+    if title.length > 10
+      return title[0..8] + "..."
     else
       return title
     end
