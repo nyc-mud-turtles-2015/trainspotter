@@ -41,7 +41,7 @@ class CollectionsController < ApplicationController
     collection.observations.delete_all
     collection.roles.delete_all
     collection.destroy
-    redirect_to session.delete(:return_to)
+    redirect_to collections_path
   end
 
   def edit
