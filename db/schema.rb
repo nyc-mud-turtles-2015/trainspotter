@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103184658) do
+ActiveRecord::Schema.define(version: 20151104141749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20151103184658) do
     t.integer  "collection_id"
     t.boolean  "admin"
     t.boolean  "can_read"
-    t.boolean  "can_create"
+    t.boolean  "can_add"
     t.boolean  "can_update"
     t.boolean  "can_invite"
     t.datetime "created_at",    null: false
