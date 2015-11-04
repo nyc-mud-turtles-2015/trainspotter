@@ -1,3 +1,8 @@
 <div class="category-info">
-  <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
+  <strong class="show-for-small-only">
+    <h5><%= link_to c.shortened_title, collection_path(c)%></h5>
+  </strong>
+  <strong class="show-for-medium-up">
+    <h5><%= link_to c.medium_title, collection_path(c)%></h5>
+  </strong>
 </div>
