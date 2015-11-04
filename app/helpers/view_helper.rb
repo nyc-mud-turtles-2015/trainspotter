@@ -23,6 +23,8 @@ module ViewHelper
      return number.to_s + " " + singular_noun
     else
      return number.to_s + " " + singular_noun + "s"
+    end
+  end
 
   def collection_description?(coll)
     if coll.description.present?
