@@ -158,7 +158,8 @@ footer{
   text-align: center;
 }
 
-.stats-text{
+.collection-description,.stats-text{
   text-align: center;
   font-family: 'Roboto Mono';
 }
+

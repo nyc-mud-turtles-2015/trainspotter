@@ -44,6 +44,10 @@ class CollectionsController < ApplicationController
     redirect_to session.delete(:return_to)
   end
 
+  def edit
+    @collection = Collection.find(params[:id])
+  end
+
   def update
     @collection = Collection.find(params[:id])
     @collection.update_attributes(valid_params)
