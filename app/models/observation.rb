@@ -21,7 +21,7 @@ private
 
   def at_least_one
     if [self.description, self.image].reject(&:blank?).size == 0
-       errors[:base] << "Please fill in at least one of the fields"
+       errors.add(:base, "Make sure you add at least a description or photo")
     end
   end
 
