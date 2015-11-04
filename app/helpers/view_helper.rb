@@ -17,11 +17,18 @@ module ViewHelper
     coll.approved_observations.first.image.url(:thumb)
   end
 
+
   def stat_view_helper(number, singular_noun)
     if number == 1
      return number.to_s + " " + singular_noun
     else
      return number.to_s + " " + singular_noun + "s"
+    end
+  end
+
+  def collection_description?(coll)
+    if coll.description.present?
+      return true
     end
   end
 
