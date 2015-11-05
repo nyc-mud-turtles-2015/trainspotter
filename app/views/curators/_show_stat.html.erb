@@ -1,9 +1,13 @@
 <h2 class = "center-text"><%= @curator.public_name %></h2>
-  <div class = "stats-text">
-    <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">About</a>
-      <div id="drop2" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
-        <p>Owns <%=stat_view_helper(@curator.collections.count, "collection")%></p>
-        <p>Contributed <%= stat_view_helper(@curator.observations_made.count, "sighting")%></p>
-        <p>Joined on <%= @curator.created_at.strftime("%b %d, %Y")%></p>
-      </div>
+   <div class = "collection-description">
+    <div class= "center-text">
+      <ul class="accordion" data-accordion>
+        <li class="accordion-navigation">
+          <a href="#panel1a">About</a>
+          <div id="panel1a" class="content">
+           <p>Owns <%=stat_view_helper(@curator.collections.count, "collection")%></p>
+           <p>Contributed <%= stat_view_helper(@curator.observations_made.count, "sighting")%></p>
+           <p>Joined on <%= @curator.created_at.strftime("%b %d, %Y")%></p>
+          </div>
+      </ul>
   </div>

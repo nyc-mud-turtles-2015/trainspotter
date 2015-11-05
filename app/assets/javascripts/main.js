@@ -21,7 +21,7 @@ $( document ).ready(function() {
     var delete_obs_url = $('#delete_observation a').attr('href');
     var collection_id = $('#delete_observation').data('collection');
     event.preventDefault();
-    swal({   title: "Are you sure you want to delete this sighting?",   text: "You will not be able to recover this sighting!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   cancelButtonText: "No, cancel!",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){
+    swal({   title: "Are you sure you want to delete this?",   text: "It will be gone forever!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes!",   cancelButtonText: "Cancel!",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){
         if (isConfirm) {
           deleteHttpRequest(delete_obs_url);
           swal({   title: "Your sighting has been deleted!",   text: "Just a second!",   timer: 2000,   showConfirmButton: false });

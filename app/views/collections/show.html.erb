@@ -1,5 +1,8 @@
-<%= flash[:errors] %>
-<%= flash[:notice] %>
+<div class = "center-text">
+  <%= flash[:errors] %>
+  <%= flash[:notice] %>
+</div>
+
 <div class = "content">
   <%= render partial: 'collections/collection_header', locals: { collection: @collection } %>
   <% if logged_in? %>
