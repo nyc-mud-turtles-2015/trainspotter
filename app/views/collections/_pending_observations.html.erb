@@ -7,5 +7,11 @@
   <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
   <li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}, class: "radius small button info" %><li>
   <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+  <div class = "center-text">
+  <ul class="stack-for-small round secondary button-group">
+    <li><%= button_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}, class: 'small button' %></li>
+    <li><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: 'small button'%></li>
+  </ul>
+  </div>
 <% end %>
 

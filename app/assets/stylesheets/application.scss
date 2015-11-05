@@ -12,12 +12,9 @@
  *
  *= require_tree .
  *= require_self
-<<<<<<< HEAD
  #= require social-share-button
-=======
  *= require foundation_and_overrides
 
->>>>>>> add foundation gem and change button css
  */
 
 h1{
@@ -119,13 +116,12 @@ span{
   padding: 5%;
 }
 
+.image-thumb h5{
+  text-align: center;
+}
+
 .image-thumb img{
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 20px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+ border: 1px solid;
 }
 
 .thumb-caption {
@@ -157,5 +153,14 @@ footer{
 .collection-description,.stats-text{
   text-align: center;
   font-family: 'Roboto Mono';
+  font-size: 15px;
 }
 
+.welcome-search {
+  text-align: center;
+  color: #0000;
+}
+
+.category-info{
+  text-align: center;
+}

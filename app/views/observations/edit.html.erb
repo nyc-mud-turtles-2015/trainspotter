@@ -11,7 +11,7 @@
         </div>
         <%= f.hidden_field :collection_id, value: @collection.id%>
         <% if @collection.user_can_add?(current_user) %>
-          <div class = "center-text"><%= f.submit "Update Sighting", class: "radius success medium button" %></div>
+          <div class = "center-text"><%= f.submit "Update Sighting", class: "medium button" %></div>
         <%end%>
     <% end %>
   <% else %>
