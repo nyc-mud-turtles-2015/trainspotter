@@ -1,6 +1,16 @@
 <ul class = "center-text" >
 <% @collections.each do |c| %>
-  <li><h2><%= link_to c.title, collection_path(c) %> </h2></li>
+  <% if logged_in? %>
+    <% if c.visible_to_user?(current_user) %>
+        <li><h2><%= link_to c.title, collection_path(c) %> </h2></li>
+    <% end %>
+  <% else %>
+    <% if c.public? %>
+        <li><h2><%= link_to c.title, collection_path(c) %> </h2></li>
+    <% end %>
+  <% end %>
 <% end %>
 </ul>
+
+
 

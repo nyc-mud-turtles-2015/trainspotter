@@ -32,4 +32,8 @@ module ViewHelper
     end
   end
 
+  def select_visible(array, user)
+    array.select { |c| c.public? || c.owned_by?(user) }
+  end
+
 end

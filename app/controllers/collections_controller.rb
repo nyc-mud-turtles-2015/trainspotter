@@ -30,7 +30,12 @@ class CollectionsController < ApplicationController
 
   def search
     @search_term = params[:c]
-    @collections = Collection.search_collection(@search_term)
+    collections = Collection.search_collection(@search_term)
+    if logged_in?
+      @collections = collections.where("is_private = ? OR is_private IS ? OR curator_id = ?", false, nil, current_user.id)
+    else
+      @collections = collections.where('is_private = ? OR is_private IS ?', false, nil)
+    end
   end
 
   def permissions
