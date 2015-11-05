@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'search', on: :collection, as: :search
   end
 
+  resource :inbox, :controller => 'inbox', :only => [:show,:create]
+
   get '/welcome', :to => 'collections#welcome'
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
