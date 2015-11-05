@@ -1,5 +1,5 @@
 class Observation < ActiveRecord::Base
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "200x200#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "200x200#" }, default_url: "/images/blank.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_attachment_file_name :image, matches: [/png\Z/, /jpe?g\Z/]
 
@@ -9,12 +9,14 @@ class Observation < ActiveRecord::Base
   validates :curator, :collection, presence: true
   has_one :pending_observation
 
-  validates :curator, :collection, presence: true
-
   validate :at_least_one
 
   def approved?
     !self.pending
+  end
+
+  def has_image?
+    self.image_file_name.present?
   end
 
 private
