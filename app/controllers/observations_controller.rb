@@ -51,13 +51,17 @@
   end
 
   def destroy
-    collection = Collection.find(params[:collection_id ])
-    if collection.owned_by?(current_user)
+    @collection = Collection.find(params[:collection_id ])
+    if @collection.owned_by?(current_user)
       Observation.find(params[:id]).destroy
     else
       flash[:error] = "You are not authorized to delete sightings on this collection"
     end
-    redirect_to collection_path(collection)
+    if request.xhr?
+      render 'collections/show'
+    else
+      redirect_to collection_path(@collection)
+    end
   end
 
   private

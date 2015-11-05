@@ -17,7 +17,7 @@
           <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary radius button dropdown">Options</button><br>
           <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
             <li><%= link_to 'Edit', edit_collection_observation_path(@observation.collection_id, @observation), :method => :get %></li>
-            <li><%= link_to 'Delete', collection_observation_path(@observation.collection_id, @observation), :method => :delete%></li>
+            <li id="delete_observation" data-collection="<%= @observation.collection_id %>" ><%= link_to 'Delete', collection_observation_path(@observation.collection_id, @observation), :method => :delete%></li>
           </ul>
         </div>
       <%end%>
