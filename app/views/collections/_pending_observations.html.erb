@@ -1,15 +1,17 @@
 <h5 class="center-text">You have pending sightings to approve for this collection.</h5>
-  <% @collection.pending_observations.each do |o|%>
-    <% if o.image_file_name.present? %>
-      <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
-    <% end %>
-    <li class= "center-text"><span><em><%= o.description %></span></em><li>
-    <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
-    <li class= "center-text">
-      <button data-dropdown="drop" aria-controls="drop" aria-expanded="false" class="small secondary  button dropdown">Permissions</button><br>
-      <ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
-        <li><%= link_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}%></li>
-        <li><%= link_to "Deny", collection_observation_path(@collection, o), :method => :delete %></li>
-      </ul>
-    <% end %>
-  </li>
+<% @collection.pending_observations.each do |o|%>
+  <% if o.image_file_name.present? %>
+    <li class= "center-pic"><%= image_tag o.image.url(:medium) %></li>
+  <% end %>
+  <li class= "center-text"><span><em><%= o.description %></span></em><li>
+  <li class= "center-text"><span>PENDING. Pitched by <%= link_to o.curator.public_name, curator_path(o.curator) %></span><li>
+  <li class= "center-text"><%= button_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}, class: "radius small button info" %><li>
+  <div id = "delete-observe"><li class= "center-text"><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: "radius small button alert" %><li></div>
+  <div class = "center-text">
+  <ul class="stack-for-small round secondary button-group">
+    <li><%= button_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}, class: 'small button' %></li>
+    <li><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: 'small button'%></li>
+  </ul>
+  </div>
+<% end %>
+
