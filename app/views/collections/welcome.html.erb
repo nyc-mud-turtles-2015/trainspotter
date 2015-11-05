@@ -1,4 +1,4 @@
-<div id = "welcome-logo">
+  <div id = "welcome-logo">
   <h1 id = "logo-text"><%= link_to 'Trainspotter', collections_path%>
   </h1>
   <img src ="/images/banner.jpg">
@@ -17,6 +17,14 @@
   <div class= "center-text"><%= button_to "Sign up to become a curator", login_path, method: "get", class: "small button"%>
   </div>
 <% end %>
+
+<div class = "welcome-grid">
+<ul class="small-block-grid-3">
+  <li><%= link_to image_tag("/images/tile_front.jpg"), "http://trainspotterapp.herokuapp.com/collections/50" %></li>
+  <li><%= link_to image_tag("/images/dog_front.jpg"), "http://trainspotterapp.herokuapp.com/collections/81" %></li>
+  <li><%= link_to image_tag("/images/bridge_front.jpg"), "http://trainspotterapp.herokuapp.com/collections/10" %></li>
+</ul>
+</div>
 
 <div class= "center-text">
   <ul class="accordion" data-accordion>
