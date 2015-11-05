@@ -14,6 +14,7 @@
   def create
     collection = Collection.find(params[:collection_id])
     observation = collection.observations.build(observation_params)
+    observation.curator_id = current_user.id
     if observation.save
       if collection.user_can_add?(current_user)
         observation.pending = false
@@ -52,8 +53,9 @@
 
   def destroy
     @collection = Collection.find(params[:collection_id ])
-    if @collection.owned_by?(current_user)
-      Observation.find(params[:id]).destroy
+    observation = Observation.find(params[:id])
+    if @collection.owned_by?(current_user) || observation.owned_by?(current_user)
+      observation.destroy
     else
       flash[:error] = "You are not authorized to delete sightings on this collection"
     end
@@ -67,7 +69,7 @@
   private
 
   def observation_params
-    params.require(:observation).permit(:description,:image, :collection_id).merge({curator_id: current_user.id})
+    params.require(:observation).permit(:description,:image, :collection_id)#.merge({curator_id: current_user.id})
   end
 
 end
