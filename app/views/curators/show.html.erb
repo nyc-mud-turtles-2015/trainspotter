@@ -7,12 +7,12 @@
   <% if logged_in? %>
     <% if @curator.is_user?(current_user) %>
       <% if @curator.username %>
-        <h3 class = "center-text">username: <%= @curator.username %>
-        </h3>
+        <h4 class = "center-text">username: <%= @curator.username %>
+        </h4>
         <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
       <% else %>
-        <h5 class = "center-text">give yourself a username:
-        </h5>
+        <h6 class = "center-text">give yourself a username:
+        </h6>
         <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
       <% end %>
       <% if @curator.has_pending_sightings? %>

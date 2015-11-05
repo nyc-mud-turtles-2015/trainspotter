@@ -1,5 +1,5 @@
 <h2 class = "center-text"><%= @collection.title  %></h2>
-<h5 class= "center-text"><span id="js_owner_of_collection">Owned by <%= link_to @collection.curator.public_name, curator_path(@collection.curator) %></span></h5>
+<h6 class= "center-text"><span id="js_owner_of_collection">Owned by <%= link_to @collection.curator.public_name, curator_path(@collection.curator) %></span></h6>
 
 <strong class="show-for-medium-up"><h6 class= "center-text"><%= @collection.description %></h5></strong>
 <%= render partial: 'collections/show_descript', locals: { collection: @collection } %>
@@ -7,4 +7,4 @@
 <div class = "div-header"></div>
 
 <div class = "center-text"><%= social_share_button_tag("Check out this collection of sightings: #{@collection.title}") %></div>
-<div class= "center-text"><%= button_to "Add a Sighting", new_collection_observation_path(@collection), method: "get", class: "radius small button"%></div>
+<div class= "center-text"><%= button_to "Add a Sighting", new_collection_observation_path(@collection), method: "get", class: "small button"%></div>

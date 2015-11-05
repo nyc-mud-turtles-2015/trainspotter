@@ -333,11 +333,11 @@ $secondary-color: #EFCC00;
 // $include-html-accordion-classes: $include-html-classes;
 
 $accordion-navigation-padding: rem-calc(5);
-$accordion-navigation-bg-color: #F1F7F4;
+$accordion-navigation-bg-color: black;
 // $accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
 // $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%);
-// $accordion-navigation-active-font-color: $jet;
-// $accordion-navigation-font-color: $jet;
+$accordion-navigation-active-font-color: white;
+$accordion-navigation-font-color: white;
 // $accordion-navigation-font-size: rem-calc(16);
 $accordion-navigation-font-family: 'Roboto Mono';
 
