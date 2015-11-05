@@ -19,8 +19,8 @@
     <div class= "center-text">
       <ul class="accordion" data-accordion>
         <li class="accordion-navigation">
-          <a href="#panel1a">Stats</a>
-          <div id="panel1a" class="content">
+          <a href="#panel2a">Stats</a>
+          <div id="panel2a" class="content">
                <p>Created on <%= @collection.created_at.strftime("%b %d, %Y")%></p>
         <p>Last updated on <%= @collection.updated_at.strftime("%b %d, %Y")%></p>
         <p><%= stat_view_helper(@collection.observations.count, "sighting") %> by
