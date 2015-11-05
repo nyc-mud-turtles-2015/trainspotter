@@ -14,7 +14,7 @@ Spot it, share it, save it. A place for communal collecting.
 * Front-end: [Javascript](http://javascript.com/) and [jQuery](http://jquery.com/)
 * Styled with [Foundation](http://foundation.zurb.com/)
 * Omni Auth logins with [Auth0](http://auth0.com/)
-* Image Attachment: [paperclip](https://github.com/thoughtbot/paperclip)
+* Image Attachment: [Paperclip](https://github.com/thoughtbot/paperclip)
 * Image Hosting: [Amazon S3](https://aws.amazon.com/s3/)
 * Styled Alerts: [Sweet Alert](http://t4t5.github.io/sweetalert/)
 * Social Media Sharing: [Social Share Button](https://github.com/huacnlee/social-share-button)
