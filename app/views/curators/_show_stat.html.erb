@@ -1,13 +1,13 @@
 <h2 class = "center-text"><%= @curator.public_name %></h2>
-   <div class = "collection-description">
-    <div class= "center-text">
-      <ul class="accordion" data-accordion>
-        <li class="accordion-navigation">
-          <a href="#panel1a">About</a>
-          <div id="panel1a" class="content">
-           <p>Owns <%=stat_view_helper(@curator.collections.count, "collection")%></p>
-           <p>Contributed <%= stat_view_helper(@curator.observations_made.count, "sighting")%></p>
-           <p>Joined on <%= @curator.created_at.strftime("%b %d, %Y")%></p>
-          </div>
-      </ul>
-  </div>
+<div class = "collection-description">
+  <div class= "center-text">
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+      <a href="#panel1a">About</a>
+      <div id="panel1a" class="content">
+        <p>Owns <%=stat_view_helper(@curator.collections.count, "collection")%></p>
+        <p>Contributed <%= stat_view_helper(@curator.observations_made.count, "sighting")%></p>
+        <p>Joined on <%= @curator.created_at.strftime("%b %d, %Y")%></p>
+      </div>
+    </ul>
+</div>

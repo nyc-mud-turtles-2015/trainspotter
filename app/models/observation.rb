@@ -23,7 +23,7 @@ class Observation < ActiveRecord::Base
     self.curator_id == user.id
   end
 
-private
+  private
 
   def at_least_one
     if [self.description, self.image].reject(&:blank?).size == 0

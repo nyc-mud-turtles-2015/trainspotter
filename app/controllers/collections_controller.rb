@@ -60,7 +60,6 @@ class CollectionsController < ApplicationController
       end
     end
 
-
   end
 
   def edit

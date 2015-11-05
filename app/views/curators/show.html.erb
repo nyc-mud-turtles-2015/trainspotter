@@ -4,23 +4,23 @@
 
 <div class = "div-header"></div>
 
-  <% if logged_in? %>
-    <% if @curator.is_user?(current_user) %>
-      <% if @curator.username %>
-        <h4 class = "center-text">username: <%= @curator.username %>
-        </h4>
-        <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
-      <% else %>
-        <h6 class = "center-text">give yourself a username:
-        </h6>
-        <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
-      <% end %>
-      <% if @curator.has_pending_sightings? %>
-        <%= render partial: 'pending_sightings', locals: { curator: @curator } %>
-      <% end %>
+<% if logged_in? %>
+  <% if @curator.is_user?(current_user) %>
+    <% if @curator.username %>
+      <h4 class = "center-text">username: <%= @curator.username %>
+      </h4>
+      <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
+    <% else %>
+      <h6 class = "center-text">give yourself a username:
+      </h6>
+      <%= render partial: 'curators/username_form', locals: { curator: @curator } %>
+    <% end %>
+    <% if @curator.has_pending_sightings? %>
+      <%= render partial: 'pending_sightings', locals: { curator: @curator } %>
     <% end %>
   <% end %>
-  <%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
+<% end %>
+<%= render partial: 'collections/show_all_profile', locals: { collections: @collections, profile: true } %>
 
 
 
