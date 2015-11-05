@@ -1,12 +1,9 @@
 class Collection < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search_collection, :against => {
-    :title => 'A',
-    :description => 'B'
-    },
-    :using => {
-      :tsearch => {:dictionary => "english"}
-    }
+  multisearchable :against => [:title, :description]
+ PgSearch.multisearch_options = {
+  :using => [:tsearch, :trigram]
+}
 
   belongs_to :curator
 

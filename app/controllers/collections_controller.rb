@@ -30,7 +30,7 @@ class CollectionsController < ApplicationController
 
   def search
     @search_term = params[:c]
-    @collections = Collection.search_collection(@search_term)
+    @collections = PgSearch.multisearch(@search_term)
   end
 
   def permissions

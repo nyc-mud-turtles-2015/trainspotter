@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104141749) do
+ActiveRecord::Schema.define(version: 20151105171757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20151104141749) do
 
   add_index "observations", ["collection_id"], name: "index_observations_on_collection_id", using: :btree
   add_index "observations", ["curator_id"], name: "index_observations_on_curator_id", using: :btree
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.integer  "curator_id"
