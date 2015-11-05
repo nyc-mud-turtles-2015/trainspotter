@@ -50,36 +50,6 @@ class Collection < ActiveRecord::Base
     end
   end
 
-
-# def updated_at_parser
-#   date = self.updated_at
-#   seconds = ((DateTime.now - date) / 1000).round
-#   interval = (seconds / 31536000).round
-#   if (interval > 1)
-#     return interval + " years"
-#   end
-#   interval = (seconds / 2592000).round
-#   if (interval > 1)
-#     return interval + " months"
-#   end
-#   interval = (seconds / 86400).round
-#   if (interval > 1)
-#     return interval + " days"
-#   end
-#   interval = (seconds / 3600).round
-#   if (interval > 0)
-#     if (interval == 1)
-#       return interval + " hour"
-#     end
-#     return interval + " hours"
-#   end
-#   interval = (seconds / 60).round
-#   if (interval > 1)
-#     return interval + " minutes"
-#   end
-#   return "just now"
-# end
-
   def medium_title
     title = self.title
     if title.length > 20
