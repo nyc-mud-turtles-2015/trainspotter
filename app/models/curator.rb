@@ -22,7 +22,7 @@ class Curator < ActiveRecord::Base
   has_many :roles
   has_many :authorized_collections, :through => :roles, :source => :collection
   validates :name, presence: true
-  validates :username, uniqueness: true
+  # validates :username, uniqueness: true #removed due to Auth0 issues, need to fix this
 
   def can_add?(coll)
     Role.exists?(curator_id: self.id, collection_id: coll.id, can_add: true)
