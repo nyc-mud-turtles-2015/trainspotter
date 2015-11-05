@@ -67,8 +67,7 @@ body {
 
 .observe-show img {
   text-align:center;
-  border: solid;
-  border-radius: 10px;
+  border: 1px solid;
 }
 
 .observe-show{
@@ -98,9 +97,8 @@ button.file-upload > input[type='file'] {
 }
 
 .center-pic img{
-  border: 4px solid black;
+  border: 1px solid black;
   text-align: center;
-  border-radius: 10px;
 }
 
 .center-text{
@@ -143,7 +141,7 @@ span{
 }
 
 footer{
-  padding: 10%;
+  padding: 3%;
 }
 
 .paginate{

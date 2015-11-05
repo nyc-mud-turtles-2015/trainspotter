@@ -1,23 +1,33 @@
 <% if collection_description?(@collection) %>
 <strong class="show-for-small-only">
   <div class = "collection-description">
-    <a data-dropdown="drop3" aria-controls="drop2" aria-expanded="false">Description</a>
-      <div id="drop3" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
-        <p>"<%= @collection.description%>"</p>
-      </div>
-    </div>
+    <div class= "center-text">
+      <ul class="accordion" data-accordion>
+        <li class="accordion-navigation">
+          <a href="#panel1a">Description</a>
+          <div id="panel1a" class="content">
+            <%= @collection.description%>
+          </div>
+      </ul>
   </div>
+
 <% end %>
 
 </strong>
-  <div class = "stats-text">
-    <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">Details</a>
-      <div id="drop2" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
 
-        <p>Created on <%= @collection.created_at.strftime("%b %d, %Y")%></p>
+  <div class = "collection-description">
+    <div class= "center-text">
+      <ul class="accordion" data-accordion>
+        <li class="accordion-navigation">
+          <a href="#panel2a">Stats</a>
+          <div id="panel2a" class="content">
+               <p>Created on <%= @collection.created_at.strftime("%b %d, %Y")%></p>
         <p>Last updated on <%= @collection.updated_at.strftime("%b %d, %Y")%></p>
         <p><%= stat_view_helper(@collection.observations.count, "sighting") %> by
         <%= stat_view_helper(@collection.curators.uniq.count, "curator") %>
           </p>
-      </div>
+          </div>
+      </ul>
   </div>
+
+
