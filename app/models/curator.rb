@@ -53,7 +53,7 @@ class Curator < ActiveRecord::Base
   end
 
   def collections_pending
-    self.collections.select {|c| c.pending_observations.any?}
+    Collection.where(curator_id: self.id).joins(:observations).where(observations: {pending: true}).uniq
   end
 
   def public_name
