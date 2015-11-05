@@ -1,9 +1,9 @@
 <div class="center-text">
   <% if @collections.empty? %>
     <h2>No results found for '<%= "#{@search_term}" %>'</h2>
-    <h4>Try a different word or browse leisurely!</h4>
+    <h5>Try a different word, or <%= link_to 'browse', collections_path %> our index.</h5>
   <% else %>
-    <h2><%= "#{pluralize(@collections.size, 'result')} for '#{@search_term}'" %></h2>
+    <h5><%= "#{pluralize(@collections.size, 'result')} for '#{@search_term}'" %></h5>
     <%= render partial: 'collections/search_results', collections: @collections, as: :collection %>
   <% end %>
 </div>

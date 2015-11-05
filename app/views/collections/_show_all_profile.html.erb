@@ -1,8 +1,17 @@
 <% collections.each do |c| %>
   <div class="large-4 small-6 columns">
     <div class = "category-info">
-      <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
-      <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
+    <% if member %>
+      <% if c.visible_to_user?(current_user) %>
+          <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+          <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
+      <% end %>
+    <% else %>
+      <% if c.public? %>
+        <%= render partial: 'collections/thumbsize_collection_image', locals: { c: c } %>
+        <%= render partial: 'collections/thumbsize_collection_title', locals: { c: c } %>
+      <% end %>
+    <% end %>
     </div>
   </div>
 <%end%>
