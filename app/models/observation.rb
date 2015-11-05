@@ -19,6 +19,10 @@ class Observation < ActiveRecord::Base
     self.image_file_name.present?
   end
 
+  def owned_by?(user)
+    self.curator_id == user.id
+  end
+
 private
 
   def at_least_one
