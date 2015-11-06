@@ -2,11 +2,11 @@
 <%= flash[:notice] %>
 <div class= "content">
   <% if @collection.owned_by?(current_user) %>
-      <h2 class = "center-text">Settings</h2>
+      <h3 class = "center-text">Settings</h3>
       <div class = "div-header"></div>
-      <h3 class = "center-text"><em>Title: <%= @collection.title %></em></h3>
-      <h5 class = "center-text"><em>Description: <%= @collection.description %></em></h2>
-    <h4 class = "center-text">Visibility:
+      <h3 class = "center-text"><%= @collection.title %></h3>
+      <h5 class = "center-text"><%= @collection.description %></h2>
+    <h6 class = "center-text">Visibility:
       <% if @collection.is_private %>
         Private (only visible to you)
         <p class = "secure-text"><%= button_to "Make Public", collection_path(@collection), method: "put", params: {:"collection[is_private]" => false}, class: "secondary small button" %></p>
@@ -14,9 +14,9 @@
         Public (visible to everyone)
         <p class = "secure-text"><%= button_to "Make Private", collection_path(@collection), method: "put", params: {:"collection[is_private]" => true}, class: "secondary small button" %></p>
       <% end %>
-    </h3>
+    </h6>
 
-  <%= render partial: 'new_form', locals: { collection: @collection } %>
+  <%= render partial: 'new_form', locals: { collection: @collection, updating: true } %>
 
   <% else %>
     <h1>You need to <%= link_to 'log in', login_path %> to see this page.</h1>
