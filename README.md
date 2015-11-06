@@ -1,5 +1,5 @@
 # Trainspotter
-Spot it, share it, save it. A place for communal collecting.
+Spot it, save it, share it. A place for communal collecting.
 
 ##Features
 * Communal Collecting
