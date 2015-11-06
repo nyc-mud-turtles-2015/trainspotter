@@ -5,6 +5,11 @@
     </div>
     <div class="3 columns"><%= f.text_area :description, placeholder: 'description', rows: '5' %>
     </div>
+    <% if updating %>
+    <div class = "center-text"><%= f.submit "Update", class: "small button" %>
+  </div>
+    <% else %>
     <div class = "center-text"><%= f.submit "Add", class: "small button" %>
   </div>
+    <% end %>
 <% end %>

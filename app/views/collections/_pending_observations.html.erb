@@ -12,7 +12,7 @@
   <div class = "center-text">
   <ul class="small-centered round secondary button-group">
     <li><%= button_to "Approve", collection_observation_path(@collection, o), method: "put", params: {:"observation[id]" => o.id}, class: 'small secondary button' %></li>
-    <li><%= button_to "Delete", collection_observation_path(@collection, o), :method => :delete, class: 'small secondary button'%></li>
+    <li><%= button_to "Deny", collection_observation_path(@collection, o), :method => :delete, class: 'small secondary button'%></li>
   </ul>
   </div>
 </div>

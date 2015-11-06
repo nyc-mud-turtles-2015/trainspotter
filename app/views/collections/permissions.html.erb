@@ -16,7 +16,7 @@
       <% end %>
     </h3>
 
-  <%= render partial: 'new_form', locals: { collection: @collection } %>
+  <%= render partial: 'new_form', locals: { collection: @collection, updating: true } %>
 
   <% else %>
     <h1>You need to <%= link_to 'log in', login_path %> to see this page.</h1>
